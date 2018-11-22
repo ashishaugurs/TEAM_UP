@@ -1,0 +1,190 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/white"
+    android:id="@+id/custom_relation"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_marginTop="15dp"
+        android:id="@+id/food_logo"
+        android:weightSum="1"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="80dp">
+
+    <LinearLayout
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:layout_weight=".30"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content">
+
+        <com.pkmmte.view.CircularImageView
+            android:id="@+id/profile_imageView"
+            android:src="@mipmap/football_player"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_weight=".55"
+        android:weightSum="1"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_width="0dp"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_smallest_ever"
+            android:text="@string/john"
+            android:id="@+id/title_fb"
+            android:layout_width="match_parent"
+            android:layout_height="22dp" />
+
+        <TextView
+            android:textColor="@color/text_write"
+            android:layout_gravity="center_vertical"
+            android:textSize="@dimen/particle"
+            android:text="@string/detail"
+            android:id="@+id/fb_des"
+            android:layout_width="match_parent"
+            android:layout_height="15dp" />
+
+    </LinearLayout>
+
+        <LinearLayout
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_weight=".15"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.AppCompatImageView
+                android:src="@mipmap/arrowrightgrey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/borderLine"
+
+        android:layout_below="@+id/food_logo"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <View
+            android:layout_weight=".16"
+            android:layout_width="0dp"
+            android:layout_height="2dp"></View>
+        <View
+            android:layout_weight=".84"
+            android:background="@color/slider_border"
+            android:layout_width="0dp"
+            android:layout_height="1dp"></View>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_below="@+id/borderLine"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <include layout="@layout/common_recycle"></include>
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_alignParentBottom="true"
+        android:id="@+id/bottomLayout"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <View
+            android:background="@color/slider_border"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"></View>
+
+        <LinearLayout
+            android:layout_marginLeft="10dp"
+            android:id="@+id/toggle_visible"
+            android:weightSum="1"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+            <LinearLayout
+                android:gravity="center"
+                android:layout_weight=".15"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+                <android.support.v7.widget.AppCompatImageView
+                    android:src="@mipmap/logout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_gravity="center_vertical"
+                android:drawableTint="@color/white"
+                android:id="@+id/title"
+                android:layout_width="0dp"
+                android:layout_weight=".70"
+                android:layout_height="40dp"
+                android:drawablePadding="15dp"
+                android:gravity="center_vertical"
+                android:padding="5dp"
+                android:text="@string/logout"
+                android:singleLine="true"
+                android:textSize="@dimen/too_small"
+                android:textColor="@color/black" />
+
+
+            <LinearLayout
+                android:visibility="invisible"
+                android:gravity="center"
+                android:layout_weight=".20"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:src="@mipmap/arrowrightgrey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:id="@+id/line_visible"
+            android:weightSum="1"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <View
+                android:layout_weight=".15"
+                android:layout_width="0dp"
+                android:layout_height="2dp"></View>
+
+            <View
+                android:layout_weight=".85"
+                android:background="@color/slider_border"
+                android:layout_width="0dp"
+                android:layout_height="2dp"></View>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

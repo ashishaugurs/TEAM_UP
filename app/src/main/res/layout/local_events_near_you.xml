@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="@color/bg_color"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_marginBottom="15dp"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <include layout="@layout/layout_toolbar_colored"></include>
+        <View
+            android:background="@color/slider_border"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"></View>
+        <include layout="@layout/common_recycle"></include>
+    </LinearLayout>
+
+
+
+</LinearLayout>

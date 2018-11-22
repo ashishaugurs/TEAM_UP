@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:padding="8dp"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:textSize="@dimen/text_size_smallest_ever"
+        android:textColor="@color/black"
+        android:text="@string/sydney"
+        android:id="@+id/cityName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_marginTop="5dp"
+        android:textSize="@dimen/particle"
+        android:textColor="#8C8C8C"
+        android:text="@string/royalStadium"
+        android:id="@+id/stadiumName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <View
+        android:background="@color/slider_border"
+        android:layout_marginTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"></View>
+
+</LinearLayout>

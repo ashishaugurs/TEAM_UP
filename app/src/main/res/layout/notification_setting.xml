@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="@color/bg_color"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/layout_toolbar_colored"></include>
+
+    <View
+        android:background="@color/slider_border"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+    <LinearLayout
+        android:layout_marginTop="12dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="54dp">
+
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:layout_width="24dp"
+                    android:src="@mipmap/smartphone"
+                    android:layout_height="wrap_content" />
+
+
+
+                <Switch
+                    android:layout_gravity="center_horizontal"
+                    android:id="@+id/push_switch"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="@string/push"
+                    android:checked="true"
+                    android:theme="@style/switch_theme"
+                   />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <View
+                android:visibility="invisible"
+                android:layout_weight=".14"
+                android:background="@color/slider_border"
+                android:layout_width="0dp"
+                android:layout_height="1dp"></View>
+
+            <View
+                android:layout_weight=".86"
+                android:background="@color/slider_border"
+                android:layout_width="0dp"
+                android:layout_height="1dp"></View>
+
+        </LinearLayout>
+
+
+        <!--faq-->
+
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="54dp">
+
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:layout_width="24dp"
+                    android:src="@mipmap/chat_notify"
+                    android:layout_height="wrap_content" />
+
+                <Switch
+                    android:layout_gravity="center_horizontal"
+                    android:id="@+id/text_switch"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="15dp"
+                    android:text="@string/text"
+                    android:layout_marginRight="5dp"
+                    android:button="@null"
+                    android:checked="false"
+                    android:theme="@style/switch_theme"
+                    />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <View
+                android:visibility="invisible"
+                android:layout_weight=".14"
+                android:background="@color/slider_border"
+                android:layout_width="0dp"
+                android:layout_height="1dp"></View>
+
+            <View
+                android:layout_weight=".86"
+                android:background="@color/slider_border"
+                android:layout_width="0dp"
+                android:layout_height="1dp"></View>
+
+        </LinearLayout>
+
+
+        <!--Privacy-->
+
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="54dp">
+
+
+            <android.support.v7.widget.AppCompatImageView
+                android:layout_width="24dp"
+                android:src="@mipmap/email_notification"
+                android:layout_height="wrap_content" />
+
+
+
+
+
+                <Switch
+                    android:layout_gravity="center_horizontal"
+                    android:id="@+id/email_switch"
+                    android:layout_width="match_parent"
+
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="5dp"
+                    android:button="@null"
+                    android:checked="true"
+                    android:text="Email notifications"
+                    android:theme="@style/switch_theme"
+                    />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <View
+                android:visibility="invisible"
+                android:layout_weight=".14"
+                android:background="@color/slider_border"
+                android:layout_width="0dp"
+                android:layout_height="1dp"></View>
+
+            <View
+                android:layout_weight=".86"
+                android:background="@color/slider_border"
+                android:layout_width="0dp"
+                android:layout_height="1dp"></View>
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+        <!--Terms-->
+
+
+
+</LinearLayout>

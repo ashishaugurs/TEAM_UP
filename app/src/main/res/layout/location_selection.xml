@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="@color/bg_color"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/layout_toolbar"></include>
+
+    <View
+        android:background="@color/slider_border"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"></View>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/search_layout"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="15dp"
+        android:weightSum="1"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <LinearLayout
+            android:layout_weight=".80"
+            android:background="@drawable/layer_list_grey"
+            android:orientation="horizontal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/placeLocation"
+                android:gravity="center"
+                android:layout_weight=".12"
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+                <android.support.v7.widget.AppCompatImageView
+                    android:padding="2dp"
+                    app:srcCompat="@drawable/ic_search_black_24dp"
+                    android:hint="@string/city"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+
+            <AutoCompleteTextView
+                android:drawableTint="@color/colorAccent"
+                android:textColorHint="@color/dark_grey"
+                android:drawablePadding="10dp"
+                android:background="@null"
+                android:hint="@string/action_search"
+                android:textSize="@dimen/text_size_smallest_ever"
+                android:imeOptions="actionSearch"
+                android:id="@+id/search_place"
+                android:padding="12dp"
+                android:singleLine="true"
+                android:layout_weight=".66"
+                android:layout_width="0dp"
+                android:layout_height="match_parent" />
+
+
+        </LinearLayout>
+
+
+
+        <TextView
+            android:textSize="@dimen/text_size_smallest_ever"
+            android:textColor="@color/blue"
+            android:gravity="center"
+            android:text="@string/cancel"
+            android:layout_gravity="center"
+            android:layout_weight=".20"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <include layout="@layout/common_recycle"></include>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

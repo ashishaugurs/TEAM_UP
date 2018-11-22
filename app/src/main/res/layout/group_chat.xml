@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/bottom"
+            android:weightSum="1"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="50dp">
+
+
+            <LinearLayout
+                android:layout_gravity="center_vertical"
+                android:orientation="vertical"
+                android:layout_weight=".22"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content">
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:layout_gravity="center"
+                    android:layout_alignParentBottom="true"
+                    android:src="@mipmap/camera"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:weightSum="1"
+                android:background="@drawable/grey_border"
+                android:layout_gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_weight=".72"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+
+
+                <EditText
+                    android:layout_marginRight="5dp"
+                    android:background="@null"
+                    android:layout_weight=".95"
+                    android:id="@+id/content_user"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent" />
+
+                <LinearLayout
+                    android:gravity="center_vertical"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/deep_grey_round"
+                    android:orientation="vertical"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp">
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:src="@mipmap/send"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:padding="15dp"
+            android:layout_above="@+id/bottom"
+            android:id="@+id/chatList"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <include layout="@layout/common_recycle"></include>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</LinearLayout>

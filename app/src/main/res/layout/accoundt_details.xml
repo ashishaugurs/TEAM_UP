@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:weightSum="1"
+    android:background="@color/bg_color"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/layout_toolbar_colored"></include>
+
+    <View
+        android:background="@color/slider_border"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"></View>
+
+    <LinearLayout
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.pkmmte.view.CircularImageView
+            android:src="@mipmap/user_four"
+            android:id="@+id/user_profile_pic"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            app:border="false"
+            app:border_color="@color/blue_icon"
+            app:border_width="1dp"
+            app:shadow="true" />
+
+        <TextView
+            android:textSize="@dimen/text_size_smallest"
+            android:layout_marginTop="20dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:text="@string/earl"
+            android:id="@+id/earl_paddilla"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:textSize="@dimen/text_size_smallest_ever"
+            android:drawablePadding="8dp"
+            android:drawableLeft="@mipmap/location"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/text_write"
+            android:text="@string/fabian"
+            android:id="@+id/loc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:gravity="center"
+            android:layout_marginRight="25dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="32dp"
+            android:weightSum="1"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:gravity="center"
+                android:layout_marginRight="3dp"
+                android:background="@drawable/blue"
+                android:textSize="@dimen/text_size_smallest_ever"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp"
+                android:textColor="@color/white"
+                android:text="@string/send_msg"
+                android:id="@+id/soccer"
+                android:layout_weight=".45"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+            <View
+                android:layout_weight=".05"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+             ></View>
+            <TextView
+                android:layout_marginLeft="3dp"
+                android:background="@drawable/blue_border"
+                android:gravity="center"
+                android:textSize="@dimen/text_size_smallest_ever"
+                android:textColor="@color/text_write"
+                android:text="@string/make_admin"
+                android:id="@+id/anyage"
+                android:layout_weight=".45"
+                android:layout_width="0dp"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <TextView
+            android:padding="8dp"
+            android:layout_marginRight="35dp"
+            android:layout_marginLeft="35dp"
+            android:textStyle="bold"
+            android:background="@drawable/fill_border_orange"
+            android:gravity="center"
+            android:textSize="@dimen/text_size_smallest_ever"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/orange"
+            android:text="@string/remove_nmber"
+            android:id="@+id/gender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

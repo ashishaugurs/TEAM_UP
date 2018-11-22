@@ -1,0 +1,44 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:background="@color/bg_color"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+
+    <com.teamup.utils.NoSwipeableViewPager
+        android:layout_above="@+id/tabs_bar"
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+        <View
+            android:layout_above="@+id/tabs_bar"
+            android:background="@color/slider_border"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+
+        <android.support.design.widget.AppBarLayout
+           android:background="@color/white"
+           android:id="@+id/tabs_bar"
+           android:layout_alignParentBottom="true"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        <android.support.design.widget.TabLayout
+            app:tabTextAppearance="@style/TabLayoutTextStyle"
+            app:tabTextColor="@color/text_write"
+            app:tabSelectedTextColor="@color/blue"
+            app:tabIndicatorColor="@color/blue"
+            android:id="@+id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:tabMode="fixed"
+            android:background="@color/white"
+            app:tabGravity="fill"/>
+    </android.support.design.widget.AppBarLayout>
+   </RelativeLayout>
+</LinearLayout>

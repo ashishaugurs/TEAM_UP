@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@color/bg_color"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/layout_toolbar_colored"></include>
+    <View
+        android:background="@color/slider_border"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"></View>
+
+    <LinearLayout
+        android:layout_marginTop="15dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/player_parent"
+            android:background="@drawable/shape_white_rounded"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="2dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.AppCompatImageView
+                android:layout_width="64dp"
+                android:id="@+id/saveListLimg"
+                android:src="@mipmap/player"
+                android:layout_height="64dp" />
+
+            <TextView
+                android:id="@+id/playerTitle"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:textSize="@dimen/text_size_smallest_ever"
+                android:textColor="@color/black"
+                android:text="@string/player_single"
+                android:layout_width="match_parent"
+                android:layout_height="21dp" />
+
+            <TextView
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:id="@+id/playerContent"
+                android:gravity="center"
+                android:textSize="@dimen/too_small"
+                android:textColor="@color/upcoming_events"
+                android:text="@string/looking_team"
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+        </LinearLayout>
+                            <!-- player 2 -->
+
+        <LinearLayout
+            android:id="@+id/team_parent"
+            android:background="@drawable/shape_white_rounded"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="2dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.AppCompatImageView
+                android:layout_width="64dp"
+                android:id="@+id/team"
+                android:src="@mipmap/team_search"
+                android:layout_height="64dp" />
+
+            <TextView
+                android:id="@+id/team_title"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:textSize="@dimen/text_size_smallest_ever"
+                android:textColor="@color/black"
+                android:text="@string/team"
+                android:layout_width="match_parent"
+                android:layout_height="21dp" />
+
+            <TextView
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:id="@+id/team_content"
+                android:gravity="center"
+                android:textSize="@dimen/too_small"
+                android:textColor="@color/upcoming_events"
+                android:text="@string/looking_player"
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+        </LinearLayout>
+
+
+
+        <!--Team Up-->
+
+        <LinearLayout
+            android:id="@+id/teamup_parent"
+            android:background="@drawable/shape_white_rounded"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="2dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.AppCompatImageView
+                android:layout_width="64dp"
+                android:id="@+id/team_up"
+                android:src="@mipmap/team_up_search"
+                android:layout_height="64dp" />
+
+            <TextView
+                android:id="@+id/teamup_title"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:textSize="@dimen/text_size_smallest_ever"
+                android:textColor="@color/black"
+                android:text="@string/teamup"
+                android:layout_width="match_parent"
+                android:layout_height="21dp" />
+
+            <TextView
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:id="@+id/teamup_content"
+                android:gravity="center"
+                android:textSize="@dimen/too_small"
+                android:textColor="@color/upcoming_events"
+                android:text="@string/looking"
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

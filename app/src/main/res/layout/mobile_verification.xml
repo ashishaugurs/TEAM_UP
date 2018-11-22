@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/team_mobile"
+    android:background="@color/bg_color"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+
+    <include layout="@layout/layout_toolbar_white" />
+
+    <LinearLayout
+        android:weightSum="10"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:visibility="gone"
+            android:layout_weight=".70"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+        </LinearLayout>
+
+
+        <LinearLayout
+         android:layout_weight=".70"
+         android:orientation="vertical"
+         android:layout_width="match_parent"
+         android:layout_height="0dp">
+         <include layout="@layout/header_text"></include>
+     </LinearLayout>
+
+        <android.support.v7.widget.AppCompatImageView
+            android:layout_marginTop="25dp"
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:src="@mipmap/mobile_top" />
+
+        <LinearLayout
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            android:layout_weight="1.5"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+            <include layout="@layout/simple_textview"></include>
+        </LinearLayout>
+
+        <!--   -->
+
+            <EditText
+                android:textCursorDrawable="@null"
+                android:textColorHint="@color/hint_color"
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="35dp"
+                android:maxLength="15"
+                android:digits="0123456789+"
+                android:textColor="#838383"
+                android:inputType="phone"
+                android:background="@drawable/shape_white_rounded"
+                android:imeOptions="actionNext"
+                android:singleLine="true"
+                android:layout_weight=".85"
+                android:textSize="@dimen/text_size_smallest"
+                android:id="@+id/email_text"
+                android:paddingLeft="18dp"
+                android:layout_marginTop="14dp"
+                android:drawablePadding="10dp"
+                android:drawableLeft="@mipmap/side_mobile"
+                android:hint="@string/hint_number"
+                android:layout_width="match_parent"
+                android:layout_height="0dp" />
+
+
+
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_marginTop="25dp"
+        android:id="@+id/confirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/confirm"
+        android:layout_gravity="bottom"
+        style="@style/bottomFooterTextStyle"
+        />
+
+
+</LinearLayout>

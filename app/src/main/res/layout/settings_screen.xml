@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/parent_setting"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:weightSum="10"
+    android:background="@color/bg_color"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+        <include layout="@layout/layout_toolbar_colored"></include>
+
+        <View
+            android:background="@color/slider_border"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"></View>
+
+    </LinearLayout>
+
+
+
+
+
+    <LinearLayout
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_weight="8"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            >
+
+
+            <TextView
+                android:textSize="@dimen/text_size_smallest_ever"
+                android:text="@string/change_password"
+                android:id="@+id/changePassword"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent" />
+
+
+            <TextView
+                style="@style/UpdateTextStyle"
+                android:onClick="onPasswordUpdateClick"
+                android:id="@+id/updatePassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginLeft="14dp"
+            android:layout_marginRight="14dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/shape_white_rounded"
+            android:weightSum="1"
+            android:visibility="gone"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" >
+
+            <LinearLayout
+                android:gravity="center"
+                android:layout_width="0dp"
+                android:layout_weight=".15"
+                android:layout_height="match_parent" >
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/first_umg"
+                    android:src="@mipmap/password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/old_pwd"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".85"
+                android:background="@null"
+                android:cursorVisible="true"
+                android:hint="@string/old_password"
+                android:imeOptions="actionNext"
+                android:inputType="textPassword"
+                android:singleLine="true"
+                android:tag="first"
+                android:textColor="@color/text_write"
+                android:textColorHint="@color/hint_color"
+                android:textCursorDrawable="@null"
+                android:textSize="@dimen/text_size_smallest" />
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_marginLeft="14dp"
+            android:layout_marginRight="14dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/shape_white_rounded"
+            android:weightSum="1"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" >
+
+            <LinearLayout
+                android:gravity="center"
+                android:layout_width="0dp"
+                android:layout_weight=".15"
+                android:layout_height="match_parent" >
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/new_password_img"
+                    android:src="@mipmap/password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/new_password"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".85"
+                android:background="@null"
+                android:cursorVisible="true"
+                android:hint="@string/new_password"
+                android:imeOptions="actionNext"
+                android:inputType="textPassword"
+                android:singleLine="true"
+                android:tag="first"
+                android:textColor="@color/text_write"
+                android:textColorHint="@color/hint_color"
+                android:textCursorDrawable="@null"
+                android:textSize="@dimen/text_size_smallest" />
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_marginLeft="14dp"
+            android:layout_marginRight="14dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/shape_white_rounded"
+            android:weightSum="1"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" >
+
+            <LinearLayout
+                android:gravity="center"
+                android:layout_width="0dp"
+                android:layout_weight=".15"
+                android:layout_height="match_parent" >
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/confirm_pwd_img"
+                    android:src="@mipmap/password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/confirm_password"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".85"
+                android:background="@null"
+                android:cursorVisible="true"
+                android:hint="@string/confirmpwd"
+                android:imeOptions="actionNext"
+                android:inputType="textPassword"
+                android:singleLine="true"
+                android:tag="first"
+                android:textColor="@color/text_write"
+                android:textColorHint="@color/hint_color"
+                android:textCursorDrawable="@null"
+                android:textSize="@dimen/text_size_smallest" />
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="24dp"
+            >
+
+
+            <TextView
+                android:textSize="@dimen/text_size_smallest_ever"
+                android:text="@string/change_email"
+                android:id="@+id/changeEmail"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent" />
+
+
+            <TextView
+                style="@style/UpdateTextStyle"
+                android:onClick="onEmailUpdateClick"
+                android:id="@+id/updateEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+        </LinearLayout>
+
+
+
+
+        <LinearLayout
+            android:layout_marginLeft="14dp"
+            android:layout_marginRight="14dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/shape_white_rounded"
+            android:weightSum="1"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" >
+
+            <LinearLayout
+                android:gravity="center"
+                android:layout_width="0dp"
+                android:layout_weight=".15"
+                android:layout_height="match_parent" >
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/email_new"
+                    android:src="@mipmap/mail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/new_mail"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".85"
+                android:background="@null"
+                android:cursorVisible="true"
+                android:hint="@string/new_email"
+                android:imeOptions="actionDone"
+                android:inputType="textEmailAddress"
+                android:singleLine="true"
+                android:tag="first"
+                android:textColor="@color/text_write"
+                android:textColorHint="@color/hint_color"
+                android:textCursorDrawable="@null"
+                android:textSize="@dimen/text_size_smallest" />
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="24dp"
+            >
+
+
+            <TextView
+                android:textSize="@dimen/text_size_smallest_ever"
+                android:text="@string/open_after"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:id="@+id/open_after"
+                android:layout_height="match_parent" />
+
+
+            <TextView
+                style="@style/UpdateTextStyle"
+                android:onClick="onLaunchSettingUpdateClick"
+                android:id="@+id/updateLaunchSetting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+        </LinearLayout>
+
+
+
+
+        <LinearLayout
+            android:layout_marginLeft="14dp"
+            android:layout_marginRight="14dp"
+            android:id="@+id/genPck"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/shape_white_rounded"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".15"
+                android:gravity="center">
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/gen_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="18dp"
+                    android:src="@mipmap/home_small" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/spinScreen"
+                android:weightSum="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="3dp"
+                android:layout_weight=".85"
+                android:orientation="horizontal">
+
+                <com.teamup.utils.NDSpinner
+                    android:layout_marginRight="5dp"
+                    style="@style/spinnerDropDownItemStyle"
+                    android:id="@+id/open_screen"
+                    android:background="@android:color/transparent"
+                    android:layout_width="0dp"
+                    android:layout_weight=".95"
+                    android:layout_height="match_parent"
+                    android:spinnerMode="dropdown"
+                    />
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/genArrow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/below" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_weight="2"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+        <TextView
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:layout_marginTop="15dp"
+            android:textColor="@color/blue"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:textSize="@dimen/text_size_smallest_ever"
+            android:text="@string/deactivate"
+            android:id="@+id/deactivate"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+
+
+</LinearLayout>

@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/linear_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@color/bg_color"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/layout_toolbar_colored"></include>
+
+    <View
+        android:background="@color/slider_border"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"></View>
+
+    <LinearLayout
+        android:layout_marginTop="15dp"
+        android:orientation="vertical"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/contact_us_data"
+            android:gravity="center_vertical"
+            android:weightSum="1"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="54dp">
+
+            <LinearLayout
+                android:layout_weight=".10"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content">
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:src="@mipmap/contact_phone"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <TextView
+                android:textSize="@dimen/text_size_smallest_ever"
+                android:textColor="@color/seem_black"
+                android:text="@string/contact_us"
+                android:id="@+id/contact_us"
+                android:layout_weight=".85"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_weight=".05"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content">
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:src="@mipmap/arrowrightgrey"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <View
+                android:visibility="invisible"
+                android:layout_weight=".14"
+                android:background="@color/slider_border"
+                android:layout_width="0dp"
+                android:layout_height="1dp"></View>
+
+            <View
+                android:layout_weight=".86"
+                android:background="@color/slider_border"
+                android:layout_width="0dp"
+                android:layout_height="1dp"></View>
+
+        </LinearLayout>
+
+
+        <!--faq-->
+
+        <LinearLayout
+            android:id="@+id/faq_data"
+            android:gravity="center_vertical"
+            android:weightSum="1"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="54dp">
+
+            <LinearLayout
+                android:layout_weight=".10"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content">
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:src="@mipmap/question"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <TextView
+                android:textSize="@dimen/text_size_smallest_ever"
+                android:textColor="@color/seem_black"
+                android:text="@string/faq"
+                android:id="@+id/faq"
+                android:layout_weight=".85"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_weight=".05"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content">
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:src="@mipmap/arrowrightgrey"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <View
+                android:visibility="invisible"
+                android:layout_weight=".14"
+                android:background="@color/slider_border"
+                android:layout_width="0dp"
+                android:layout_height="1dp"></View>
+
+            <View
+                android:layout_weight=".86"
+                android:background="@color/slider_border"
+                android:layout_width="0dp"
+                android:layout_height="1dp"></View>
+
+        </LinearLayout>
+
+
+        <!--Privacy-->
+
+        <LinearLayout
+            android:id="@+id/privacy_policy_data"
+            android:gravity="center_vertical"
+            android:weightSum="1"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="54dp">
+
+            <LinearLayout
+                android:layout_weight=".10"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content">
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:src="@mipmap/policy"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <TextView
+                android:textSize="@dimen/text_size_smallest_ever"
+                android:textColor="@color/seem_black"
+                android:text="@string/privacy"
+                android:id="@+id/privacy"
+                android:layout_weight=".85"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_weight=".05"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content">
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:src="@mipmap/arrowrightgrey"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <View
+                android:visibility="invisible"
+                android:layout_weight=".14"
+                android:background="@color/slider_border"
+                android:layout_width="0dp"
+                android:layout_height="1dp"></View>
+
+            <View
+                android:layout_weight=".86"
+                android:background="@color/slider_border"
+                android:layout_width="0dp"
+                android:layout_height="1dp"></View>
+
+        </LinearLayout>
+
+
+
+        <!--Terms-->
+
+        <LinearLayout
+            android:id="@+id/terms_data"
+            android:gravity="center_vertical"
+            android:weightSum="1"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="54dp">
+
+            <LinearLayout
+                android:layout_weight=".10"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content">
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:src="@mipmap/terms"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <TextView
+                android:textSize="@dimen/text_size_smallest_ever"
+                android:textColor="@color/seem_black"
+                android:text="@string/condition"
+                android:id="@+id/terms"
+                android:layout_weight=".85"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_weight=".05"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content">
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:src="@mipmap/arrowrightgrey"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <View
+                android:visibility="invisible"
+                android:layout_weight=".14"
+                android:background="@color/slider_border"
+                android:layout_width="0dp"
+                android:layout_height="1dp"></View>
+
+            <View
+                android:layout_weight=".86"
+                android:background="@color/slider_border"
+                android:layout_width="0dp"
+                android:layout_height="1dp"></View>
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

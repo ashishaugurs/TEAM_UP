@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">@color/blue</color>
+    <color name="lightColor">#ffffff</color>
+
+    <color name="dollar_color">#42b72a</color>
+    <color name="black">#000000</color>
+    <color name="white">#ffffff</color>
+
+    <color name="grey">#dadada</color>
+    <color name="tab_unselected">#b3ffffff</color>
+    <color name="tab_selected">#FFFFFF</color>
+    <color name="light_grey">#eef1f4</color>
+    <color name="blue">#049FF6</color>
+
+     <color name="colorDark">#0479ba</color>
+    <color name="blue_icon">#04a0f7</color>
+    <color name="error_icon">#ff001f</color>
+
+    <color name="dark_grey">#999999</color>
+    <color name="text_color_menu">#525252</color>
+    <color name="reccyle_bg">#eff1f8</color>
+    <color name="yellow">#ffffff</color>
+    <color name="transparency">#392821</color>
+    <color name="bg_grey">#ebedf6</color>
+
+    <color name="filter_color">#a3aab5</color>
+    <color name="text_black">#495565</color>
+    <color name="text_grey">#9ea3ad</color>
+
+    <color name="dark_accent">#27c1b7</color>
+    <color name="reorder">#f97e13</color>
+
+    <color name="pink">#f06be2</color>
+    <color name="red">#ff0023</color>
+
+
+
+    <!--  team up color-->
+    <color name="greylishBrown">#ededed</color>
+    <color name="hint_color">#e0e4e8</color>
+    <color name="facebook_btn">#3B5998</color>
+    <color name="login_btn">#049FF6</color>
+    <color name="header_color"></color>
+    <color name="bg_color">#FBFBFB</color>
+    <color name="edit_bg"></color>
+    <color name="color_grey">#4D6476</color>
+    <color name="editext_bg">#ecf5fb</color>
+    <color name="mono">#d7eaf7</color>
+    <color name="green">#7ED321</color>
+    <color name="toggle_border">#E5E5E5</color>
+    <color name="deactivate_otp">#ebeded</color>
+    <color name="text_write">#4D6476</color>
+    <color name="slider_border">#d7d6da</color>
+    <color name="icon_color">#8b8b8b</color>
+    <color name="upcoming_events">#7D7D7D</color>
+    <color name="orange">#F63704</color>
+    <color name="seem_black">#14171A</color>
+    <color name="bright_blue">#007AFF</color>
+    <color name="yellow_text">#F5A623</color>
+    <color name="green_text">#25AE88</color>
+    <color name="red_text">#D75A4A</color>
+
+
+</resources>

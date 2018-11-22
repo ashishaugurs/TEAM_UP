@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/bg_color"
+    android:weightSum="1"
+    android:id="@+id/parentLinear"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/layout_toolbar_colored"></include>
+
+    <View
+        android:background="@color/slider_border"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"></View>
+
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="150dp">
+
+        <LinearLayout
+
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:weightSum="1"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:gravity="left"
+                android:orientation="vertical"
+                android:layout_weight=".40"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content">
+
+                <com.pkmmte.view.CircularImageView
+                    android:src="@mipmap/user_four"
+                    android:id="@+id/user_profile_pic"
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
+                    app:border="false"
+                    app:border_color="@color/blue_icon"
+                    app:border_width="1dp"
+                    app:shadow="true" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_weight=".60"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:textSize="@dimen/text_size_smallest"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:text="@string/earl"
+                    android:id="@+id/playerName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:drawablePadding="5dp"
+                    android:drawableLeft="@mipmap/location"
+                    android:textSize="@dimen/text_size_smallest_ever"
+                    android:layout_marginTop="6dp"
+                    android:textColor="@color/text_write"
+                    android:text="@string/earl"
+                    android:id="@+id/playerLocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+
+
+
+
+        </LinearLayout>
+
+
+
+
+
+        <LinearLayout
+            android:layout_marginRight="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="5dp"
+            android:weightSum=".99"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:textSize="@dimen/text_size_smallest_ever"
+                android:drawablePadding="5dp"
+                android:drawableLeft="@mipmap/soccer"
+                android:layout_marginTop="9dp"
+                android:textColor="@color/text_write"
+                android:text="@string/soccer"
+                android:id="@+id/soccer"
+                android:layout_weight=".35"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:textSize="@dimen/text_size_smallest_ever"
+                android:drawablePadding="5dp"
+                android:drawableLeft="@mipmap/birth_color"
+                android:layout_marginTop="9dp"
+                android:textColor="@color/text_write"
+                android:text="@string/any_age"
+                android:id="@+id/anyage"
+                android:layout_weight=".35"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:textSize="@dimen/text_size_smallest_ever"
+                android:drawablePadding="5dp"
+                android:drawableLeft="@mipmap/gender_colored"
+                android:layout_marginTop="9dp"
+                android:textColor="@color/text_write"
+                android:text="@string/male"
+                android:id="@+id/gender"
+                android:layout_weight=".33"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:fillViewport="true"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:textSize="@dimen/text_size_smallest_ever"
+                android:textColor="@color/text_write"
+                android:text="@string/detail_player"
+                android:id="@+id/text_player"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:visibility="gone"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_marginTop="35dp"
+                    android:background="@drawable/blue_border"
+                    android:gravity="center"
+                    android:id="@+id/send_msg"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:text="@string/conti"
+                    android:textColor="@color/blue"
+                    android:textSize="@dimen/text_size_big"
+                    />
+                <TextView
+                    android:layout_marginBottom="25dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/login_btn"
+                    android:gravity="center"
+                    android:id="@+id/invite"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:text="@string/conti"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_big"
+                    />
+
+            </LinearLayout>
+
+
+            <TextView
+
+                android:layout_gravity="center"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:drawablePadding="10dp"
+                android:layout_marginBottom="25dp"
+                android:layout_marginTop="10dp"
+                android:drawableLeft="@mipmap/heart_icon_blue"
+                android:gravity="center"
+                android:id="@+id/addtofav"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:text="@string/add_to_favorites"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/text_size_smallest"
+                />
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+</LinearLayout>

@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@drawable/shape_white_rounded"
+    android:clickable="true"
+    android:weightSum="1"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginTop="15dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_marginTop="14dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <LinearLayout
+            android:gravity="center_horizontal"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="16dp"
+            android:layout_weight=".15"
+            android:orientation="vertical"
+            android:weightSum="1">
+
+            <TextView
+                android:id="@+id/monthName"
+                android:layout_width="32dp"
+                android:layout_height="14dp"
+                android:layout_marginTop="15dp"
+                android:background="@color/red"
+                android:gravity="center"
+                android:text="@string/may"
+                android:textColor="@color/white"
+                android:textSize="@dimen/particle" />
+
+            <TextView
+                android:id="@+id/calendar_date"
+                android:layout_width="32dp"
+                android:layout_height="23dp"
+                android:layout_below="@+id/monthName"
+                android:background="#f9f9f9"
+                android:gravity="center"
+                android:padding="4dp"
+                android:text="@string/date_number"
+                android:textColor="@color/black"
+                android:textSize="@dimen/too_small" />
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_marginLeft="16dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".76"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:weightSum="1">
+
+            <TextView
+                android:textSize="@dimen/text_size_smallest_ever"
+                android:textColor="@color/black"
+                android:text="@string/session"
+                android:id="@+id/trainingTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:textSize="@dimen/text_size_smallest_ever"
+                android:layout_marginTop="4dp"
+                android:textColor="@color/text_write"
+                android:text="@string/soccer"
+                android:id="@+id/soccer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+            <LinearLayout
+                android:layout_marginTop="8dp"
+                android:weightSum="1"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:layout_width="14dp"
+                    android:src="@mipmap/clock"
+                    android:layout_height="match_parent" />
+
+                <TextView
+
+                    android:layout_marginLeft="6dp"
+                    android:textSize="@dimen/too_small"
+                    android:layout_weight=".50"
+                    android:textColor="@color/text_write"
+                    android:text="@string/time_start"
+                    android:id="@+id/textTime"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent" />
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:layout_width="14dp"
+                    android:src="@mipmap/location"
+                    android:layout_height="match_parent" />
+
+                <TextView
+                    android:layout_marginLeft="6dp"
+                    android:textSize="@dimen/too_small"
+                    android:layout_weight=".50"
+                    android:textColor="@color/text_write"
+                    android:text="@string/training_loc"
+                    android:id="@+id/textLoc"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent" />
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".10"
+
+            android:orientation="vertical"
+            android:weightSum="1">
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/eventDay"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_gravity="start"
+                android:src="@mipmap/right_hdpi"
+             />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <View
+        android:layout_marginTop="17dp"
+        android:background="@color/slider_border"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"></View>
+
+    <!--bottom layout-->
+
+    <LinearLayout
+        android:layout_marginTop="16dp"
+        android:weightSum=".99"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="65dp">
+
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:layout_weight=".33"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:src="@mipmap/not_going_color"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:textSize="@dimen/too_small"
+                android:layout_marginTop="6dp"
+                android:gravity="center"
+                android:text="@string/not_going"
+                android:id="@+id/not_going"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:layout_weight=".33"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:src="@mipmap/going_color"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:textSize="@dimen/too_small"
+                android:layout_marginTop="6dp"
+                android:gravity="center"
+                android:text="@string/going"
+                android:id="@+id/going"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:layout_weight=".33"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:src="@mipmap/not_sure_color"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:textSize="@dimen/too_small"
+                android:layout_marginTop="6dp"
+                android:gravity="center"
+                android:text="@string/not_sure"
+                android:id="@+id/not_sure"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/attendance_root"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="26dp"
+        android:layout_marginBottom="12dp"
+        android:layout_marginTop="12dp"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <TextView
+            android:textSize="@dimen/text_size_smallest_ever"
+            android:id="@+id/attendance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center_vertical"
+            android:text="@string/see_attendance"
+            android:textColor="@color/blue"
+            android:textStyle="bold" />
+
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+
+        android:id="@+id/attendance_send"
+        android:layout_gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="26dp"
+        android:layout_marginBottom="12dp"
+        android:layout_marginTop="12dp"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <LinearLayout
+            android:layout_gravity="center_vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".50"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/send_notification"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_gravity="center"
+                android:background="@drawable/fill_border"
+                android:drawableLeft="@mipmap/bell_small"
+                android:drawablePadding="5dp"
+                android:gravity="center_vertical"
+                android:paddingBottom="2dp"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:paddingTop="2dp"
+                android:text="@string/send_notification"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/too_small" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_gravity="center_vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".50"
+            android:orientation="vertical">
+
+            <TextView
+                android:textSize="@dimen/text_size_smallest_ever"
+                android:id="@+id/attendance_copy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center_vertical"
+                android:text="@string/see_attendance"
+                android:textColor="@color/blue"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

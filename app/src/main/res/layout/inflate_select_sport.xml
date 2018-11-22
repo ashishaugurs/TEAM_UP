@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent">
+
+    <TextView
+        android:textColorHint="@color/hint_color"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_weight="1"
+        android:padding="10dp"
+        android:id="@+id/textView_sport"
+        android:textColor="@color/black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/basketball"
+        android:layout_marginLeft="10dp"
+        android:textSize="@dimen/text_size_smallest_ever" />
+
+    <View
+        android:layout_marginLeft="15dp"
+        android:background="@color/slider_border"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"></View>
+
+
+</LinearLayout>

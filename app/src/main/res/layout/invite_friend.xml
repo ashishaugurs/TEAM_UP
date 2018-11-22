@@ -1,0 +1,494 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/parent"
+    android:background="@color/bg_color"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/layout_toolbar_white"/>
+
+    <LinearLayout
+        android:weightSum="10"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:visibility="gone"
+            android:layout_weight=".70"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+            <include layout="@layout/layout_toolbar"></include>
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_marginRight="35dp"
+            android:layout_marginLeft="35dp"
+            android:layout_weight="2.5"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+            <include layout="@layout/header_text"></include>
+        </LinearLayout>
+
+
+
+        
+        <LinearLayout
+            android:focusable="true"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:orientation="vertical"
+            android:layout_weight="1.2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+            
+            <LinearLayout
+                android:weightSum="1"
+                android:layout_weight=".10"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="0dp">
+
+                <View
+                    android:layout_weight=".08"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"></View>
+
+                <View
+                    android:layout_weight=".92"
+                    android:background="@color/greylishBrown"
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"></View>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:weightSum="1"
+                android:layout_weight=".80"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="0dp">
+
+                <LinearLayout
+                    android:gravity="center"
+                    android:layout_weight=".25"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent">
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:id="@+id/imgFb"
+                        android:src="@mipmap/facebook"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:weightSum="1"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:layout_weight=".65"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:textColor="@color/black"
+                        android:layout_weight=".40"
+                        android:textSize="@dimen/text_size"
+                        android:text="@string/facebook"
+                        android:id="@+id/title_fb"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp" />
+
+                    <TextView
+
+                        android:textColor="@color/text_write"
+                        android:layout_weight=".40"
+                        android:textSize="@dimen/text_size_smallest_ever"
+                        android:text="@string/desFb"
+                        android:id="@+id/fb_des"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp" />
+                    
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:layout_weight=".10"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent">
+
+                    <android.support.v7.widget.AppCompatImageView
+
+                        android:src="@mipmap/right_hdpi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:gravity="bottom"
+                android:weightSum="1"
+                android:layout_weight=".10"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="0dp">
+
+                <View
+                    android:layout_weight=".25"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"></View>
+
+                <View
+                    android:layout_weight=".75"
+                    android:background="@color/greylishBrown"
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"></View>
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <!--second diagram-->
+
+        <LinearLayout
+            android:focusable="true"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:orientation="vertical"
+            android:layout_weight="1.1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+
+
+            <LinearLayout
+                android:weightSum="1"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="0dp">
+
+                <LinearLayout
+                    android:gravity="center"
+                    android:layout_weight=".25"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent">
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:src="@mipmap/instagram"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:weightSum="1"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:layout_weight=".65"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:textColor="@color/black"
+                        android:layout_weight=".40"
+                        android:textSize="@dimen/text_size"
+                        android:text="@string/insta"
+                        android:id="@+id/title_in"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp" />
+
+                    <TextView
+                        android:textColor="@color/text_write"
+                        android:layout_weight=".40"
+                        android:textSize="@dimen/text_size_smallest_ever"
+                        android:text="@string/desIn"
+                        android:id="@+id/insta_design"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp" />
+
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:layout_weight=".10"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent">
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:src="@mipmap/right_hdpi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:gravity="bottom"
+                android:weightSum="1"
+                android:layout_weight=".10"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="0dp">
+
+                <View
+                    android:layout_weight=".25"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"></View>
+
+                <View
+                    android:layout_weight=".75"
+                    android:background="@color/greylishBrown"
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"></View>
+
+            </LinearLayout>
+        </LinearLayout>
+<!--Third row-->
+
+        <LinearLayout
+            android:focusable="true"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:orientation="vertical"
+            android:layout_weight="1.1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+
+
+
+            <LinearLayout
+                android:weightSum="1"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="0dp">
+
+                <LinearLayout
+                    android:gravity="center"
+                    android:layout_weight=".25"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent">
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:src="@mipmap/gmail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:weightSum="1"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:layout_weight=".65"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:textColor="@color/black"
+                        android:layout_weight=".40"
+                        android:textSize="@dimen/text_size"
+                        android:text="@string/emailOnly"
+                        android:id="@+id/title_em"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp" />
+
+                    <TextView
+                        android:textColor="@color/text_write"
+                        android:layout_weight=".40"
+                        android:textSize="@dimen/text_size_smallest_ever"
+                        android:text="@string/desEmail"
+                        android:id="@+id/des_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp" />
+
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:layout_weight=".10"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent">
+
+                    <android.support.v7.widget.AppCompatImageView
+
+                        android:src="@mipmap/right_hdpi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:focusable="true"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:gravity="bottom"
+                android:weightSum="1"
+                android:layout_weight=".10"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="0dp">
+
+                <View
+                    android:layout_weight=".25"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"></View>
+
+                <View
+                    android:layout_weight=".75"
+                    android:background="@color/greylishBrown"
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"></View>
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <!--Fourth-->
+        <LinearLayout
+            android:focusable="true"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:orientation="vertical"
+            android:layout_weight="1.1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+
+
+
+            <LinearLayout
+                android:weightSum="1"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="0dp">
+
+                <LinearLayout
+                    android:gravity="center"
+                    android:layout_weight=".25"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent">
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:src="@mipmap/phone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:weightSum="1"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:layout_weight=".65"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:textColor="@color/black"
+                        android:layout_weight=".40"
+                        android:textSize="@dimen/text_size"
+                        android:text="@string/contact"
+                        android:id="@+id/title_co"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp" />
+
+                    <TextView
+                        android:textColor="@color/text_write"
+                        android:layout_weight=".40"
+                        android:textSize="@dimen/text_size_smallest_ever"
+                        android:text="@string/invite"
+                        android:id="@+id/des_contact"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp" />
+
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:layout_weight=".10"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent">
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:src="@mipmap/right_hdpi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:gravity="bottom"
+                android:weightSum="1"
+                android:layout_weight=".10"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="0dp">
+
+                <View
+                    android:layout_weight=".08"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"></View>
+
+                <View
+                    android:layout_weight=".92"
+                    android:background="@color/greylishBrown"
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"></View>
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="2.5"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp">
+            <TextView
+                android:focusable="true"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:textSize="@dimen/text_size_smallest_ever"
+                android:gravity="center_horizontal"
+                android:layout_gravity="bottom"
+                android:textColor="@color/blue_icon"
+                android:text="@string/inviteOnly"
+                android:id="@+id/invite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

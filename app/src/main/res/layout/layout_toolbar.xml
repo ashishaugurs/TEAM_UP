@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/blue"
+    android:id="@+id/toolbar"
+    app:theme="@style/ToolBarStyle"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:contentInsetStart="0dp"
+    android:contentInsetLeft="0dp"
+    android:contentInsetRight="0dp"
+    android:contentInsetEnd="0dp"
+    app:contentInsetLeft="0dp"
+    app:contentInsetStart="0dp"
+    app:contentInsetRight="0dp"
+    app:contentInsetEnd="0dp">
+
+
+    <android.support.v7.widget.AppCompatImageView
+        android:focusable="true"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:visibility="gone"
+        android:src="@drawable/back_arrow_white"
+        android:layout_marginRight="10dp"
+        android:id="@+id/back_press"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left|center"
+      />
+    
+    <LinearLayout
+        android:visibility="gone"
+        android:background="?android:attr/selectableItemBackground"
+        android:layout_marginLeft="5dp"
+        android:gravity="left|center_vertical"
+        android:id="@+id/back_copy"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.AppCompatImageView
+            android:focusable="true"
+            android:clickable="true"
+            android:id="@+id/appBack"
+            android:src="@mipmap/ios_back"
+            android:layout_width="wrap_content"
+            android:layout_height="28dp" />
+
+        <TextView
+            android:text="@string/back"
+            android:gravity="center_horizontal"
+            android:layout_gravity="left|center_vertical"
+            android:textSize="@dimen/text_size_smallest"
+            android:textColor="@color/blue"
+            android:id="@+id/backText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+    
+
+    <TextView
+        android:textSize="@dimen/text_size"
+        android:textColor="@color/white"
+        android:id="@+id/tvHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+    <android.support.v7.widget.AppCompatImageView
+        android:focusable="true"
+        android:clickable="true"
+        android:layout_marginRight="10dp"
+        android:scaleType="fitCenter"
+        android:visibility="gone"
+        android:id="@+id/notification"
+        android:src="@drawable/notifications"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right|center_vertical"
+        />
+
+    <android.support.v7.widget.AppCompatImageView
+        app:tint="@color/white"
+        android:visibility="gone"
+        android:src="@mipmap/bell"
+        android:focusable="true"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:layout_marginRight="12dp"
+        android:id="@+id/notificationChange"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right|center_vertical"
+        />
+
+    <TextView
+        android:background="?android:attr/selectableItemBackground"
+        android:visibility="gone"
+        android:text="@string/done"
+        android:gravity="center_horizontal"
+        android:layout_gravity="right"
+        android:textSize="@dimen/text_size_smallest"
+        android:textColor="@color/blue"
+        android:id="@+id/rightText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+</android.support.v7.widget.Toolbar>

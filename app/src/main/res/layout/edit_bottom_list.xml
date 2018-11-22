@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bottom_sheet"
+    android:layout_width="match_parent"
+
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent"
+    android:orientation="vertical"
+    android:padding="@dimen/text_size_smallest_ever"
+    app:behavior_hideable="true"
+    app:behavior_peekHeight="0dp"
+    app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
+
+    <LinearLayout
+        android:background="@drawable/shape_white_rounded"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center_vertical">
+
+
+
+        <TextView
+            android:background="@android:color/transparent"
+            android:id="@+id/edit_list"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:gravity="center"
+            android:textSize="@dimen/text_size_smallest_ever"
+            android:text="@string/edit_list"
+            android:textColor="@color/blue" />
+
+        <View
+            android:background="@color/slider_border"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"></View>
+
+        <TextView
+            android:background="@android:color/transparent"
+            android:id="@+id/delete_list"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:gravity="center"
+            android:textSize="@dimen/text_size_smallest_ever"
+            android:text="@string/delete_list"
+            android:textColor="@color/blue" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/cancel_pop"
+        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:textSize="@dimen/text_size_smallest_ever"
+        android:background="@drawable/shape_white_rounded"
+        android:text="@string/cancel"
+        android:textColor="@color/blue" />
+
+</LinearLayout>

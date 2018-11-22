@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+
+    android:id="@+id/event_parent"
+    android:background="@color/bg_color"
+    android:weightSum="10"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/layout_toolbar_colored"></include>
+    <View
+        android:background="@color/slider_border"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"></View>
+
+
+
+    <android.support.v4.widget.NestedScrollView
+        android:fillViewport="true"
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_marginTop="7dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/shape_white_rounded"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight=".15"
+                        android:gravity="center">
+
+                        <android.support.v7.widget.AppCompatImageView
+                            android:id="@+id/eventIcon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:src="@mipmap/event_type_color" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:weightSum="1"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="3dp"
+                        android:layout_weight=".85"
+                        android:orientation="horizontal">
+
+                        <com.teamup.utils.NDSpinner
+                            android:layout_marginRight="5dp"
+                            style="@style/spinnerDropDownItemStyle"
+                            android:id="@+id/eventType"
+                            android:background="@android:color/transparent"
+                            android:layout_width="0dp"
+                            android:layout_weight=".95"
+                            android:layout_height="match_parent"
+                            android:spinnerMode="dropdown"
+                            />
+
+                        <android.support.v7.widget.AppCompatImageView
+                            android:id="@+id/eventArrow"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_gravity="center"
+                            android:src="@mipmap/below" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+
+
+                <!--sport screen-->
+
+                <LinearLayout
+                    android:layout_marginTop="7dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/shape_white_rounded"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight=".15"
+                        android:gravity="center">
+
+                        <android.support.v7.widget.AppCompatImageView
+                            android:id="@+id/gen_img"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:src="@mipmap/clock_color" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/select_sport"
+                        android:weightSum="1"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="3dp"
+                        android:layout_weight=".85"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:text="06/23/2018"
+                            android:paddingLeft="7dp"
+                            android:gravity="center_vertical"
+                            android:id="@+id/sportsActivity"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".95"
+                            android:background="@null"
+                            android:cursorVisible="true"
+                            android:hint="@string/date"
+                            android:imeOptions="actionNext"
+                            android:inputType="textEmailAddress"
+                            android:singleLine="true"
+                            android:tag="first"
+                            android:textColor="@color/text_write"
+                            android:textColorHint="@color/hint_color"
+                            android:textCursorDrawable="@null"
+                            android:textSize="@dimen/text_size_smallest" />
+
+                        <android.support.v7.widget.AppCompatImageView
+                            android:id="@+id/genArrow"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_gravity="center"
+                            android:src="@mipmap/below" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_marginTop="7dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/shape_white_rounded"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight=".15"
+                        android:gravity="center">
+
+                        <android.support.v7.widget.AppCompatImageView
+                            android:id="@+id/recurrnigImg"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:src="@mipmap/rec_color" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:weightSum="1"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="3dp"
+                        android:layout_weight=".85"
+                        android:orientation="horizontal">
+
+                        <com.teamup.utils.NDSpinner
+                            android:layout_marginRight="5dp"
+                            style="@style/spinnerDropDownItemStyle"
+                            android:id="@+id/recurring"
+                            android:background="@android:color/transparent"
+                            android:layout_width="0dp"
+                            android:layout_weight=".95"
+                            android:layout_height="match_parent"
+                            android:spinnerMode="dropdown"
+                            />
+
+                        <android.support.v7.widget.AppCompatImageView
+                            android:id="@+id/recurringArrow"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_gravity="center"
+                            android:src="@mipmap/below" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:layout_marginTop="7dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:background="@drawable/shape_white_rounded"
+                    android:weightSum="1"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp" >
+
+                    <LinearLayout
+                        android:gravity="center"
+                        android:layout_width="0dp"
+                        android:layout_weight=".12"
+                        android:layout_height="match_parent" >
+
+                        <android.support.v7.widget.AppCompatImageView
+                            android:id="@+id/first_umg"
+                            android:src="@mipmap/event_loc"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent" />
+                    </LinearLayout>
+
+                    <fragment
+                        android:id="@+id/place_autocomplete_fragment"
+                        android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight=".87"/>
+
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:layout_marginTop="7dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:id="@+id/datePck"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/shape_white_rounded"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight=".15"
+                        android:gravity="center">
+
+                        <android.support.v7.widget.AppCompatImageView
+                            android:id="@+id/dob_img"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:src="@mipmap/opponent_color" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:weightSum="1"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="3dp"
+                        android:layout_weight=".85"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:text="@string/opponent"
+                            android:paddingLeft="7dp"
+                            android:textSize="@dimen/text_size_smallest"
+                            android:textColor="@color/text_write"
+                            android:textColorHint="@color/hint_color"
+                            android:hint="@string/opponent"
+                            android:imeOptions="actionNext"
+                            android:singleLine="true"
+                            android:layout_marginRight="5dp"
+                            android:id="@+id/opponentSpin"
+                            android:background="@android:color/transparent"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            />
+
+                        <android.support.v7.widget.AppCompatImageView
+                            android:visibility="gone"
+                            android:id="@+id/opponent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_gravity="center"
+                            android:src="@mipmap/below" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:layout_marginTop="7dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:background="@drawable/shape_white_rounded"
+                    android:weightSum="1"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="96dp" >
+
+                    <LinearLayout
+                        android:gravity="center"
+                        android:layout_width="0dp"
+                        android:layout_weight=".15"
+                        android:layout_height="match_parent" >
+
+                        <android.support.v7.widget.AppCompatImageView
+                            android:layout_marginTop="8dp"
+                            android:layout_gravity="top"
+                            android:id="@+id/note_img"
+                            android:src="@mipmap/notes_color"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                    <EditText
+                        android:text="@string/note"
+                        android:paddingLeft="7dp"
+                        android:maxLines="4"
+                        android:maxLength="100"
+                        android:layout_marginTop="8dp"
+                        android:gravity="top"
+                        android:id="@+id/note"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight=".85"
+                        android:background="@null"
+                        android:cursorVisible="true"
+                        android:hint="@string/note"
+                        android:inputType="text|textMultiLine|textCapSentences"
+                        android:imeOptions="actionDone"
+                        android:tag="first"
+                        android:textColor="@color/text_write"
+                        android:textColorHint="@color/hint_color"
+                        android:textCursorDrawable="@null"
+                        android:textSize="@dimen/text_size_smallest" />
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+            <CheckBox
+                android:checked="true"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="30dp"
+                android:textColor="@color/text_write"
+                android:textSize="@dimen/text_size_smallest_ever"
+                android:text="@string/collect_money_teampay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <CheckBox
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="30dp"
+                android:textColor="@color/text_write"
+                android:textSize="@dimen/text_size_smallest_ever"
+                android:text="@string/send_attendance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+            <LinearLayout
+                android:layout_marginTop="35dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginRight="35dp"
+                    android:onClick="navifateProfile"
+                    android:id="@+id/confirm"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:background="@drawable/login_btn"
+                    android:gravity="center"
+                    android:text="@string/conti"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_smallest" />
+
+
+                <TextView
+                    android:visibility="gone"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginRight="25dp"
+                    android:id="@+id/delete_event"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:background="@drawable/fill_border_orange"
+                    android:gravity="center"
+                    android:text="@string/delete_event"
+                    android:textColor="@color/orange"
+                    android:textSize="@dimen/text_size_smallest" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+
+</LinearLayout>

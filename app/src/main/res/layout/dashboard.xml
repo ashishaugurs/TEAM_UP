@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fillViewport="true"
+    android:background="@color/bg_color"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+<LinearLayout
+    android:background="@color/bg_color"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+    <LinearLayout
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:weightSum="1"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="45dp">
+
+            <TextView
+                android:layout_marginLeft="4dp"
+                android:gravity="center_vertical"
+                android:text="@string/upcoming"
+                android:textColor="@color/upcoming_events"
+                android:textSize="@dimen/too_small"
+                android:id="@+id/upcoming_events"
+                android:layout_width="0dp"
+                android:layout_weight=".82"
+                android:layout_height="match_parent" />
+
+
+            <TextView
+                android:visibility="invisible"
+                android:clickable="false"
+                android:background="?android:attr/selectableItemBackground"
+                android:gravity="center"
+                android:text="@string/see_all"
+                android:textColor="@color/blue_icon"
+                android:textSize="@dimen/too_small"
+                android:id="@+id/see_all"
+                android:layout_width="0dp"
+                android:layout_weight=".13"
+                android:layout_height="22dp" />
+
+            <LinearLayout
+                android:visibility="invisible"
+                android:clickable="false"
+                android:gravity="center"
+                android:layout_width="0dp"
+                android:layout_weight=".04"
+                android:layout_height="match_parent">
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:tint="@color/blue_icon"
+                    android:src="@mipmap/arrowrightgrey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="8dp" />
+
+            </LinearLayout>
+            
+        </LinearLayout>
+
+        <LinearLayout
+            android:background="@drawable/shape_white_rounded"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="145dp">
+
+
+                    <android.support.v7.widget.RecyclerView
+                        android:layout_margin="2dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:id="@+id/date_recycle"
+                        android:scrollbars="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                    </android.support.v7.widget.RecyclerView>
+
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:weightSum="1"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="46dp">
+
+            <TextView
+                android:layout_marginLeft="4dp"
+                android:gravity="center_vertical"
+                android:text="@string/ads"
+                android:textColor="@color/upcoming_events"
+                android:textSize="@dimen/too_small"
+                android:id="@+id/local_ads"
+                android:layout_width="0dp"
+                android:layout_weight=".82"
+                android:layout_height="match_parent" />
+
+
+            <TextView
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:gravity="center"
+                android:text="@string/see_all"
+                android:textColor="@color/blue_icon"
+                android:textSize="@dimen/too_small"
+                android:id="@+id/see_ads"
+                android:layout_width="0dp"
+                android:layout_weight=".13"
+                android:layout_height="22dp" />
+
+            <LinearLayout
+                android:gravity="center"
+                android:layout_width="0dp"
+                android:layout_weight=".04"
+                android:layout_height="match_parent">
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:tint="@color/blue_icon"
+                    android:src="@mipmap/arrowrightgrey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="8dp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="200dp">
+            <android.support.v7.widget.RecyclerView
+                android:clickable="true"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:id="@+id/ads_recycle"
+                android:scrollbars="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            </android.support.v7.widget.RecyclerView>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginBottom="31dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:weightSum="1"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="46dp">
+
+            <TextView
+                android:layout_marginLeft="4dp"
+                android:gravity="center_vertical"
+                android:text="@string/local_events"
+                android:textColor="@color/upcoming_events"
+                android:textSize="@dimen/too_small"
+                android:id="@+id/local_events"
+                android:layout_width="0dp"
+                android:layout_weight=".82"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:gravity="center"
+                android:text="@string/see_all"
+                android:textColor="@color/blue_icon"
+                android:textSize="@dimen/too_small"
+                android:id="@+id/see_all_events"
+                android:layout_width="0dp"
+                android:layout_weight=".13"
+                android:layout_height="22dp" />
+
+            <LinearLayout
+                android:gravity="center"
+                android:layout_width="0dp"
+                android:layout_weight=".04"
+                android:layout_height="match_parent">
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:tint="@color/blue_icon"
+                    android:src="@mipmap/arrowrightgrey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="8dp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="130dp">
+            <android.support.v7.widget.RecyclerView
+                android:clickable="true"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:id="@+id/nearbyevents"
+                android:scrollbars="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            </android.support.v7.widget.RecyclerView>
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>

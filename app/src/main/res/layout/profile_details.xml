@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/detailsSpin"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/bg_color"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+        <include layout="@layout/layout_toolbar_white"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/bg_color"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:weightSum="10">
+
+
+            <include layout="@layout/header_text"></include>
+
+            <RelativeLayout
+                android:id="@+id/accessCamera"
+                android:layout_width="wrap_content"
+                android:layout_height="110dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="46dp"
+                android:onClick="showPermission">
+
+                <com.pkmmte.view.CircularImageView
+                    android:id="@+id/user_profile_pic"
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
+                    android:background="@mipmap/place_holder"
+                    app:border="false"
+                    app:border_color="@color/blue_icon"
+                    app:border_width="1dp"
+                    app:shadow="true" />
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/plus_add"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignEnd="@+id/user_profile_pic"
+                    android:layout_alignRight="@+id/user_profile_pic"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/circle_round"
+                    android:src="@mipmap/plus_icon" />
+            </RelativeLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/open_gen"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:background="@drawable/shape_white_rounded"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight=".15"
+                        android:gravity="center">
+
+                        <android.support.v7.widget.AppCompatImageView
+                            android:id="@+id/gen_img"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/gender" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="3dp"
+                        android:layout_weight=".85"
+                        android:orientation="horizontal"
+                        android:weightSum="1">
+
+                        <com.teamup.utils.NDSpinner
+                            android:id="@+id/gender"
+                            style="@style/spinnerDropDownItemStyle"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginRight="5dp"
+                            android:layout_weight="1"
+                            android:background="@android:color/transparent"
+                            android:spinnerMode="dropdown" />
+
+                        <android.support.v7.widget.AppCompatImageView
+                            android:id="@+id/genderArrow"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_gravity="center"
+                            android:padding="5dp"
+                            android:src="@mipmap/below" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/datePck"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="30dp"
+                    android:background="@drawable/shape_white_rounded"
+                    android:onClick="openCal"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight=".15"
+                        android:gravity="center">
+
+                        <android.support.v7.widget.AppCompatImageView
+                            android:id="@+id/dob_img"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/dob" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="3dp"
+                        android:layout_weight=".85"
+                        android:orientation="horizontal"
+                        android:weightSum="1">
+
+                        <TextView
+                            android:id="@+id/dob"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:hint="@string/dob"
+                            android:paddingLeft="2dp"
+                            android:textColor="@color/text_write"
+                            android:textColorHint="@color/hint_color"
+                            android:textSize="@dimen/text_size_smallest" />
+
+                        <android.support.v7.widget.AppCompatImageView
+                            android:id="@+id/dobArrow"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_gravity="center"
+                            android:padding="5dp"
+                            android:src="@mipmap/below" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/open_des"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="30dp"
+                    android:background="@drawable/shape_white_rounded"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight=".15"
+                        android:gravity="center">
+
+                        <android.support.v7.widget.AppCompatImageView
+                            android:id="@+id/des_img"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/your_description" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="3dp"
+                        android:layout_weight=".85"
+                        android:orientation="horizontal"
+                        android:weightSum="1">
+
+                        <com.teamup.utils.NDSpinner
+                            android:id="@+id/describe"
+                            style="@style/spinnerDropDownItemStyle"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginRight="5dp"
+                            android:layout_weight="1"
+                            android:background="@android:color/transparent"
+                            android:spinnerMode="dropdown" />
+
+                        <android.support.v7.widget.AppCompatImageView
+                            android:id="@+id/desArrow"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_gravity="center"
+                            android:padding="5dp"
+                            android:src="@mipmap/below" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <TextView
+        android:onClick="navifateProfile"
+        android:id="@+id/confirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="@string/conti"
+        style="@style/bottomFooterTextStyle"
+        />
+
+</LinearLayout>

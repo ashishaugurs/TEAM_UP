@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/bg_color"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_weight="1.5"
+            android:gravity="center"
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:text="@string/teampay"
+            android:textColor="#000000"
+            android:textSize="@dimen/text_size_big" />
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/imageView"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:src="@mipmap/mobile"
+            />
+
+        <include layout="@layout/simple_textview"></include>
+
+        <LinearLayout
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+
+
+
+            <android.support.v7.widget.AppCompatImageView
+                android:visibility="gone"
+                android:layout_marginTop="-10dp"
+                android:id="@+id/circle_zero"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/oval_shape"
+                />
+
+            <android.support.v7.widget.AppCompatImageView
+                android:visibility="gone"
+                android:layout_marginTop="-10dp"
+                android:layout_marginLeft="4dp"
+                android:id="@+id/circle_one"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/oval_shape"
+                />
+
+            <android.support.v7.widget.AppCompatImageView
+                android:visibility="gone"
+                android:layout_marginTop="-10dp"
+                android:layout_marginLeft="4dp"
+                android:id="@+id/circle_two"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/oval_shape"
+                />
+
+            <android.support.v7.widget.AppCompatImageView
+                android:visibility="gone"
+                android:layout_marginTop="-10dp"
+                android:layout_marginLeft="4dp"
+                android:id="@+id/circle_three"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/oval_shape"
+                />
+
+            <android.support.v7.widget.AppCompatImageView
+                android:visibility="gone"
+                android:layout_marginTop="-10dp"
+                android:layout_marginLeft="4dp"
+                android:id="@+id/circle_four"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/oval_shape"
+                />
+        </LinearLayout>
+
+
+    </LinearLayout>
+</RelativeLayout>
