@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +29,7 @@ public class DashBoard extends Fragment implements OnItemClickListener{
     View rootView;
     String type="";
     TextView upcoming_events,see_all,local_ads,see_ads,local_events,see_all_events;
+    String TAG = DashBoard.class.getName();
 
     @Nullable
     @Override
@@ -56,7 +58,10 @@ public class DashBoard extends Fragment implements OnItemClickListener{
         see_ads.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(context, SearchInner.class));
+
+                HomeTab homeTab = (HomeTab) getParentFragment();
+                homeTab.viewPager.setCurrentItem(1);
+
             }
         });
         see_all_events.setOnClickListener(new View.OnClickListener() {
@@ -85,6 +90,8 @@ public class DashBoard extends Fragment implements OnItemClickListener{
         see_all_events.setTypeface(CommonUtils.setFontMedium(context));
         see_ads.setTypeface(CommonUtils.setFontMedium(context));
         see_all.setTypeface(CommonUtils.setFontMedium(context));
+
+
 
     }
 

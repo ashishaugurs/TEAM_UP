@@ -529,7 +529,7 @@ public class AddProfile extends BaseActivity {
         Player player = (Player)getIntent().getSerializableExtra(AppConstant.Player);
 
 
-        player.setImageUrl(profileUrl);
+        player.setImage_url(profileUrl);
         player.setGender(gender.getSelectedItem().toString());
         player.setDescribe(describe.getSelectedItem().toString());
         player.setDob(dob.getText().toString());

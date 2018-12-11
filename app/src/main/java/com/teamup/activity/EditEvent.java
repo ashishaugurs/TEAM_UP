@@ -2,9 +2,11 @@ package com.teamup.activity;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.AppCompatImageView;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -24,8 +27,18 @@ import com.google.android.gms.location.places.AutocompleteFilter;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocompleteFragment;
 import com.google.android.gms.location.places.ui.PlaceSelectionListener;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 import com.teamup.R;
+import com.teamup.model.Event;
+import com.teamup.utils.AppConstant;
 import com.teamup.utils.CommonUtils;
+import com.teamup.utils.FirebaseUtils;
 import com.teamup.utils.NDSpinner;
 
 import java.text.SimpleDateFormat;
@@ -34,15 +47,16 @@ import java.util.Locale;
 
 public class EditEvent extends BaseActivity {
     NDSpinner eventType,recurring;
-    EditText textRef,notes,opponentSpin;
+    EditText location,notes,opponentSpin;
     TextView dateTime,confirm,delete_event;
     AppCompatImageView eventIcon,eventArrow,dateTimeIcon,dateTimeArrow,
             recurrnigImg,recurringArrow,locationImg,opponentImg,opponentArrow, noteImg;
     private PlaceAutocompleteFragment placeAutocompleteFragment;
-
+    CheckBox isMoneyCollected, isSendAttendance;
     LinearLayout event_parent;
     DatePickerDialog.OnDateSetListener date;
     Calendar myCalendar;
+    String lat="", lng="";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -67,9 +81,88 @@ public class EditEvent extends BaseActivity {
             }
         });
 
+        loadData();
 
     }
 
+
+    private void loadData(){
+        FirebaseUtils.getEventRef(getIntent().getStringExtra(AppConstant.KEY_TEAM_ID))
+                .child(getIntent().getStringExtra(AppConstant.KEY_EVENT_ID))
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                        if(!dataSnapshot.exists())
+                            return;
+
+                        Event event = dataSnapshot.getValue(Event.class);
+                        dateTime.setText(event.getDateTime());
+                        notes.setText(event.getDescription() );
+                        opponentSpin.setText(event.getOpponent() );
+                        location.setText(event.getLocation() );
+                        isMoneyCollected.setChecked(event.getCollectMoney());
+                        isSendAttendance.setChecked(event.getSendAttendance());
+                        lat = event.getLat();
+                        lng = event.getLng();
+
+
+                        
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+    }
+
+
+
+    String TAG = EditEvent.class.getName();
+    private void editEvent(){
+
+        String teamID = getIntent().getStringExtra(AppConstant.KEY_TEAM_ID);
+
+
+        String eventID = getIntent().getStringExtra(AppConstant.KEY_EVENT_ID);
+        DatabaseReference reference = FirebaseUtils.getEventRef(teamID)
+                .child(eventID);
+
+
+        Event event = new Event(dateTime.getText().toString(),
+                notes.getText().toString(),
+                isMoneyCollected.isChecked(),
+                isSendAttendance.isChecked(),
+                lat,
+                location.getText().toString(),
+                lng,
+                opponentSpin.getText().toString(),
+                //recurring.getSelectedItem().toString(),
+                true,
+                eventType.getSelectedItem().toString(),
+                FirebaseUtils.getUId(),
+                true,
+                "",
+                false,
+                teamID,
+                eventID);
+
+
+        reference.setValue(event)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+
+                        if(task.isSuccessful()){
+                            Log.d(TAG, "onComplete: success");
+                            Toast.makeText(context, "Event Edited", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
+
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -85,12 +178,16 @@ public class EditEvent extends BaseActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         CommonUtils.hideSoftKeyboard(context);
-        CommonUtils.simpleSnackBar("work in progress",event_parent);
+      //  CommonUtils.simpleSnackBar("work in progress",event_parent);
+        editEvent();
         return super.onOptionsItemSelected(item);
     }
 
 
     private void findIdSetTypeFace() {
+
+        isMoneyCollected = findViewById(R.id.isMoneyCollected);
+        isSendAttendance = findViewById(R.id.isSendAttendance);
 
         event_parent=findViewById(R.id.event_parent);
 
@@ -169,18 +266,21 @@ public class EditEvent extends BaseActivity {
     private void locationFunction() {
         placeAutocompleteFragment = (PlaceAutocompleteFragment) getFragmentManager().findFragmentById(R.id.place_autocomplete_fragment);
         ((View)findViewById(R.id.place_autocomplete_search_button)).setVisibility(View.GONE);
-        textRef=((EditText)findViewById(R.id.place_autocomplete_search_input));
-        textRef.setTextSize(TypedValue.COMPLEX_UNIT_PX,getResources().getDimension(R.dimen.text_size_smallest));
-        textRef.setTextColor(getResources().getColor(R.color.text_write));
-        textRef.setHintTextColor(getResources().getColor(R.color.hint_color));
-        textRef.setHint("Location");
-        textRef.setText("Australia");
+        location=((EditText)findViewById(R.id.place_autocomplete_search_input));
+        location.setTextSize(TypedValue.COMPLEX_UNIT_PX,getResources().getDimension(R.dimen.text_size_smallest));
+        location.setTextColor(getResources().getColor(R.color.text_write));
+        location.setHintTextColor(getResources().getColor(R.color.hint_color));
+        location.setHint("Location");
+        location.setText("Australia");
         AutocompleteFilter autocompleteFilter = new AutocompleteFilter.Builder().setTypeFilter(AutocompleteFilter.TYPE_FILTER_CITIES).build();
         placeAutocompleteFragment.setFilter(autocompleteFilter);
         placeAutocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
             @Override
             public void onPlaceSelected(Place place) {
                 locationImg.setImageResource(R.mipmap.event_loc);
+                LatLng latLng = place.getLatLng();
+                lat = latLng.latitude+"";
+                lng = latLng.longitude+"";
                 Toast.makeText(getApplicationContext(),place.getName().toString(),Toast.LENGTH_SHORT).show();
             }
 
@@ -222,7 +322,7 @@ public class EditEvent extends BaseActivity {
             CommonUtils.simpleSnackBar("Please select reccuring event",event_parent);
             return false;
         }
-        else if(TextUtils.isEmpty(textRef.getText().toString().trim())){
+        else if(TextUtils.isEmpty(location.getText().toString().trim())){
 
             CommonUtils.hideSoftKeyboard(context);
             CommonUtils.simpleSnackBar("Please select location",event_parent);

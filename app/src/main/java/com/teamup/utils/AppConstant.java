@@ -23,6 +23,7 @@ public class AppConstant {
     public static final String USER_ID ="user_id" ;
     public static final String EMAIL ="email" ;
     public static final String Player ="player" ;
+    public static final String KEY_TEAM_ID = "TEAMID", KEY_EVENT_ID = "EVENTID";
 
     public static final String NAME ="name" ;
     public static final String LAST_NAME ="last_name" ;

@@ -17,12 +17,16 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.firebase.auth.FirebaseAuth;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 import com.teamup.R;
+import com.teamup.model.Member;
 import com.teamup.model.Player;
+import com.teamup.utils.AppConstant;
 import com.teamup.utils.CommonUtils;
 import com.teamup.utils.FirebaseUtils;
 import com.teamup.utils.NDSpinner;
@@ -30,11 +34,18 @@ import com.teamup.utils.NDSpinner;
 public class AddNewMember extends BaseActivity {
 
     AppCompatImageView grp_name;
-    EditText firstName,lastName,emailAdd,callAdd;
+    EditText firstName;
+    EditText lastName;
+    EditText callAdd;
     NDSpinner gender,group;
     TextView confirm;
-    AppCompatImageView genArrow,gen_img,team_img,lastimg,email_img,first_umg;
+    AppCompatImageView genArrow;
+    AppCompatImageView gen_img;
+    AppCompatImageView team_img;
+    AppCompatImageView lastimg;
+    AppCompatImageView first_umg;
     String TAG = AddNewMember.class.getName();
+    String uid = "";
 
 
 
@@ -50,9 +61,9 @@ public class AddNewMember extends BaseActivity {
         setGroup();
         firstName.addTextChangedListener(new CommonUtils.CustomTextWatcher(context,firstName,R.mipmap.person_colored,team_img,R.mipmap.first_name));
         lastName.addTextChangedListener(new CommonUtils.CustomTextWatcher(context,lastName,R.mipmap.person_colored,lastimg,R.mipmap.first_name));
-        emailAdd.addTextChangedListener(new CommonUtils.CustomTextWatcher(context,emailAdd,R.mipmap.mail_colored,email_img,R.mipmap.mail));
         callAdd.addTextChangedListener(new CommonUtils.CustomTextWatcher(context,callAdd,R.mipmap.phone_active,first_umg,R.mipmap.contact_grey));
 
+        setDeactivated();
     }
 
     private void findId() {
@@ -62,7 +73,6 @@ public class AddNewMember extends BaseActivity {
         genArrow=findViewById(R.id.genArrow);
 
         lastimg=findViewById(R.id.lastimg);
-        email_img=findViewById(R.id.email_img);
         first_umg=findViewById(R.id.first_umg);
 
 
@@ -70,13 +80,11 @@ public class AddNewMember extends BaseActivity {
         lastName=findViewById(R.id.lastName);
         gender=findViewById(R.id.gender);
         group=findViewById(R.id.group);
-        emailAdd=findViewById(R.id.emailAddress);
         callAdd=findViewById(R.id.call);
         confirm=findViewById(R.id.confirm);
 
         firstName.setTypeface(CommonUtils.setFontTextNormal(context));
         lastName.setTypeface(CommonUtils.setFontTextNormal(context));
-        emailAdd.setTypeface(CommonUtils.setFontTextNormal(context));
         callAdd.setTypeface(CommonUtils.setFontTextNormal(context));
         confirm.setTypeface(CommonUtils.setFontTextHeader(context));
 
@@ -85,12 +93,59 @@ public class AddNewMember extends BaseActivity {
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!isFieldsCurrentlyActive)
-                    Toast.makeText(context, "Enter mobile number", Toast.LENGTH_SHORT).show();
+
+                addMember();
+
+
             }
         });
     }
 
+
+    private void addMember(){
+
+        String teamID = getIntent().getStringExtra(AppConstant.KEY_TEAM_ID);
+
+        DatabaseReference reference = FirebaseUtils.getTeamMemberRef(teamID)
+                //this id will be used as team member id
+                .child(uid);
+        
+
+        Member member = new Member(teamID,
+                callAdd.getText().toString(),
+                firstName.getText().toString(),
+                lastName.getText().toString(),
+                gender.getSelectedItem().toString(),
+                group.getSelectedItem().toString(),
+                uid,
+                false,
+                false);
+
+
+        if(CommonUtils.isAnyEditTextEmpty(firstName, lastName, callAdd)) {
+            return;
+        }
+
+        if(gender.getSelectedItem()==null || group.getSelectedItem()==null) {
+            Toast.makeText(context, "All Fields required", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        
+
+        
+        reference.setValue(member)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                   
+                        if(task.isSuccessful()) {
+                            Toast.makeText(context, "Member added successfully", Toast.LENGTH_SHORT).show();
+                            finish();
+                        }
+                        
+                    }
+                });
+    }
 
     TextWatcher textWatcher = new TextWatcher() {
         @Override
@@ -109,7 +164,7 @@ public class AddNewMember extends BaseActivity {
           //  Log.d(TAG, "afterTextChanged: "+editable.toString());
 
 
-            setActivated(false);
+            setDeactivated();
 
 
 
@@ -121,27 +176,31 @@ public class AddNewMember extends BaseActivity {
 
 
             FirebaseUtils.getFirebaseRootRef()
-                    .child(FirebaseUtils.PLAYERNODE)
+                    .child(FirebaseUtils.NODE_PLAYER)
                    .orderByChild(FirebaseUtils.KEY_PHONE)
                     .equalTo(number)
                     .addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            setActivated(true);
 
+                           // setDeactivated(true);
                             Log.d(TAG, "onDataChange: count -> "+dataSnapshot.getChildrenCount());
 
                             Log.d(TAG, "onDataChange: "+dataSnapshot.getValue());
                             Log.d(TAG, "onDataChange: ref = "+dataSnapshot.getRef());
-                            if(!dataSnapshot.exists())
+                            if(!dataSnapshot.exists()) {
+                                Toast.makeText(context, "No player found", Toast.LENGTH_SHORT).show();
                                 return;
+                            }
+
 
 
                             for(DataSnapshot post : dataSnapshot.getChildren()){
                                 Player player = post.getValue(Player.class);
                                 firstName.setText(player.getFirstname() );
                                 lastName.setText(player.getLastname() );
-                                emailAdd.setText(player.getEmail() );
+
+                                uid = post.getKey();
                                 
                                 int t = 0;
                                 for(String item: genders) {
@@ -168,21 +227,20 @@ public class AddNewMember extends BaseActivity {
     };
 
 
+
+
     Boolean isFieldsCurrentlyActive = false;
-    private void setActivated(Boolean isActivated){
-        firstName.setEnabled(isActivated);
-        lastName.setEnabled(isActivated);
-        emailAdd.setEnabled(isActivated);
-        gender.setEnabled(isActivated);
-        group.setEnabled(isActivated);
+    private void setDeactivated(){
+        firstName.setEnabled(false);
+        lastName.setEnabled(false);
+        gender.setEnabled(false);
+        //group.setEnabled(isActivated);
 
-        if(!isActivated){
-            emptyFields(firstName, lastName, emailAdd);
-            gender.setSelection(-1);
-            group.setSelection(-1);
-        }
+        emptyFields(firstName, lastName);
+        gender.setSelection(-1);
+        // group.setSelection(-1);
 
-        isFieldsCurrentlyActive =  isActivated;
+        isFieldsCurrentlyActive = false;
 
     }
 
@@ -197,7 +255,7 @@ public class AddNewMember extends BaseActivity {
             "Gender",
             "Male",
             "Female",
-                    "Transgender"
+            "Transgender"
 };
 
 

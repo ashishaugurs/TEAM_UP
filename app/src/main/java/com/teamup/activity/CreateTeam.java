@@ -8,6 +8,7 @@ import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
@@ -26,8 +27,14 @@ import com.google.android.gms.location.places.ui.PlaceAutocompleteFragment;
 import com.google.android.gms.location.places.ui.PlaceSelectionListener;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 import com.teamup.R;
 import com.teamup.adapter.EventDetailsAdapter;
+import com.teamup.model.Member;
+import com.teamup.model.Player;
 import com.teamup.model.Team;
 import com.teamup.utils.AppConstant;
 import com.teamup.utils.CommonUtils;
@@ -128,16 +135,21 @@ public class CreateTeam extends BaseActivity {
                             CommonUtils.getTimeByCurrentTimestamp(System.currentTimeMillis()));
                     team.setLocation(location.getText().toString());
 
-                    FirebaseUtils.getTeamNodeRef()
-                            .push()
-                            .setValue(team)
+                    DatabaseReference reference = FirebaseUtils.getTeamNodeRef().push();
+
+                    final String teamID = reference.getKey();
+
+
+                            reference.setValue(team)
                             .addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                
-                                    if(task.isSuccessful())
-                                        Toast.makeText(context, "Successfully added as a team", Toast.LENGTH_SHORT).show();
-                                    
+                                    if(task.isSuccessful()) {
+
+                                        //let it commented for a while
+                                       // addMeAsPlayer(teamID);
+                                      }
                                 }
                             });
 
@@ -148,6 +160,49 @@ public class CreateTeam extends BaseActivity {
         });
     }
 
+    private void addMeAsPlayer(final String teamID){
+
+        FirebaseUtils.getMyProfileReference()
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        Player player = dataSnapshot.getValue(Player.class);
+
+                        Member member = new Member(teamID,
+                                player.getPhone(),
+                                player.getFirstname(),
+                                player.getLastname(),
+                                player.getGender(),
+                                player.getDescribe(),
+                                FirebaseUtils.getUId(),
+                                true,
+                                true
+                                );
+
+                        DatabaseReference reference = FirebaseUtils.getTeamMemberRef(teamID)
+                                //this id will be used as team member id
+                                .child(FirebaseUtils.getUId());
+                        reference.setValue(member)
+                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+
+                                        if(task.isSuccessful()){
+                                            Toast.makeText(context, "Team Successfully Added", Toast.LENGTH_SHORT).show();
+                                            finish();
+                                        }
+                                    }
+                                });
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
+
+    }
 
     @Override
     protected void onDestroy() {

@@ -5,33 +5,33 @@ import java.io.Serializable;
 
 public class Player implements Serializable {
 
-    private String createdOn;
+    private String created_on;
     private String describe;
-    private String deviceId;
+    private String device_id;
     private String dob;
     private String email;
-    private Boolean emailNotification;
+    private Boolean email_notification;
     private String firstname;
     private String gender;
-    private String imageUrl;
+    private String image_url;
     private String lastname;
     private String lat;
     private String location;
     private String lng;
-    private String modifiedOn;
+    private String modified_on;
     private String phone;
-    private String pushNotification;
+    private String push_notification;
     private String status;
-    private Boolean textNotification;
+    private Boolean text_notification;
     private String sa;
 
 
-    public String getCreatedOn() {
-        return createdOn==null?"":createdOn;
+    public String getCreated_on() {
+        return created_on ==null?"": created_on;
     }
 
-    public void setCreatedOn(String createdOn) {
-        this.createdOn = createdOn;
+    public void setCreated_on(String created_on) {
+        this.created_on = created_on;
     }
 
     public String getDescribe() {
@@ -42,12 +42,12 @@ public class Player implements Serializable {
         this.describe = describe;
     }
 
-    public String getDeviceId() {
-        return deviceId==null?"":deviceId;
+    public String getDevice_id() {
+        return device_id ==null?"": device_id;
     }
 
-    public void setDeviceId(String deviceId) {
-        this.deviceId = deviceId;
+    public void setDevice_id(String device_id) {
+        this.device_id = device_id;
     }
 
     public String getDob() {
@@ -66,12 +66,12 @@ public class Player implements Serializable {
         this.email = email;
     }
 
-    public Boolean getEmailNotification() {
-        return emailNotification!=null;
+    public Boolean getEmail_notification() {
+        return email_notification !=null;
     }
 
-    public void setEmailNotification(Boolean emailNotification) {
-        this.emailNotification = emailNotification;
+    public void setEmail_notification(Boolean email_notification) {
+        this.email_notification = email_notification;
     }
 
     public String getFirstname() {
@@ -90,12 +90,12 @@ public class Player implements Serializable {
         this.gender = gender;
     }
 
-    public String getImageUrl() {
-        return imageUrl==null?"":imageUrl;
+    public String getImage_url() {
+        return image_url ==null?"": image_url;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setImage_url(String image_url) {
+        this.image_url = image_url;
     }
 
     public String getLastname() {
@@ -130,12 +130,12 @@ public class Player implements Serializable {
         this.lng = lng;
     }
 
-    public String getModifiedOn() {
-        return modifiedOn;
+    public String getModified_on() {
+        return modified_on;
     }
 
-    public void setModifiedOn(String modifiedOn) {
-        this.modifiedOn = modifiedOn;
+    public void setModified_on(String modified_on) {
+        this.modified_on = modified_on;
     }
 
     public String getPhone() {
@@ -146,12 +146,12 @@ public class Player implements Serializable {
         this.phone = phone;
     }
 
-    public String getPushNotification() {
-        return pushNotification==null?"":pushNotification;
+    public String getPush_notification() {
+        return push_notification ==null?"": push_notification;
     }
 
-    public void setPushNotification(String pushNotification) {
-        this.pushNotification = pushNotification;
+    public void setPush_notification(String push_notification) {
+        this.push_notification = push_notification;
     }
 
     public String getStatus() {
@@ -162,12 +162,12 @@ public class Player implements Serializable {
         this.status = status;
     }
 
-    public Boolean getTextNotification() {
-        return textNotification!=null;
+    public Boolean getText_notification() {
+        return text_notification !=null;
     }
 
-    public void setTextNotification(Boolean textNotification) {
-        this.textNotification = textNotification;
+    public void setText_notification(Boolean text_notification) {
+        this.text_notification = text_notification;
     }
 
     public String getSa() {

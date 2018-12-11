@@ -13,7 +13,7 @@
     <string name="signupemail">Sign up with email</string>
     <string name="teamup">TeamUp</string>
 
-    <string name="content_data">We sent you a code\nto verify your mobile number</string>
+    <string name="content_data">We sent you a code\nto verify your phone number</string>
 
 
     <string name="tutorial_2">Find and join local teams around you or\n "TeamUP" with other individuals</string>
@@ -328,9 +328,9 @@
     <string name="starbucks">Starbuck</string>
     <string name="verify">Verify</string>
     <string name="getOTP">Get Otp</string>
-    <string name="mobile">Mobile</string>
-    <string name="mobile_code_land">Please enter your mobile number for otp verification</string>
-    <string name="mobile_code">Please enter your mobile number\nfor otp verification</string>
+    <string name="phone">Mobile</string>
+    <string name="mobile_code_land">Please enter your phone number for otp verification</string>
+    <string name="mobile_code">Please enter your phone number\nfor otp verification</string>
     <string name="verification">Please enter the verification\ncode sent to</string>
     <string name="sample">xxxxxxxxxx</string>
     <string name="yourCode">Your Code</string>

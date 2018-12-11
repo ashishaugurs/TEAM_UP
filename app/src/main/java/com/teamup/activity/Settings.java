@@ -344,7 +344,7 @@ public class Settings extends BaseActivity {
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                         Player player = dataSnapshot.getValue(Player.class);
-                        player.setDeviceId("XXXXXXX-"+System.currentTimeMillis());
+                        player.setDevice_id("XXXXXXX-"+System.currentTimeMillis());
                         dataSnapshot.getRef().setValue(player);
                     }
 

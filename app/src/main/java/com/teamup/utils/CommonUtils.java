@@ -91,6 +91,8 @@ public class CommonUtils {
 
     }
 
+
+
     public static void write(String message) {
         try {
             System.out.println(message);
@@ -981,6 +983,13 @@ public class CommonUtils {
     }
 
 
+    public static void simpleSnackBar(Activity activity, String message){
+        Snackbar.make(activity.getWindow().getDecorView().findViewById(android.R.id.content),
+                message,
+                Snackbar.LENGTH_SHORT)
+                .show();
+    }
+
 
     public static AlertDialog getInviteDialog(Context context, String dialogMessage, String initialMessage){
 
@@ -1007,6 +1016,18 @@ public class CommonUtils {
 
         return dialog;
 
+    }
+
+
+    public static boolean isAnyEditTextEmpty(EditText... editTexts){
+        Boolean isAnyEmpty = false;
+        for(EditText editText : editTexts){
+            if(editText.getText().toString().isEmpty()){
+                editText.setError("Field required");
+                isAnyEmpty = true;
+            }
+        }
+        return isAnyEmpty;
     }
 
 }

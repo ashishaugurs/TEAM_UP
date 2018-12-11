@@ -157,7 +157,7 @@ public class UserProfile extends BaseActivity {
                             lastName.setText(player.getLastname());
                             dob.setText(player.getDob());
 
-                            Log.d(TAG, "onDataChange: url ="+player.getImageUrl());
+                            Log.d(TAG, "onDataChange: url ="+player.getImage_url());
 
 
                             int t;
@@ -189,9 +189,9 @@ public class UserProfile extends BaseActivity {
 
                             Log.d(TAG, "onDataChange: after setting describe spinner");
 
-                            if(!player.getImageUrl().isEmpty())
+                            if(!player.getImage_url().isEmpty())
                                 Picasso.get()
-                                        .load(player.getImageUrl())
+                                        .load(player.getImage_url())
                                         .placeholder(R.mipmap.place_holder)
                                         .into(userProfilePic);
 
@@ -223,7 +223,7 @@ public class UserProfile extends BaseActivity {
         player.setLastname(lastName.getText().toString());
 
         if(pathImage != null)
-        player.setImageUrl(profileUrl);
+        player.setImage_url(profileUrl);
 
 
         player.setGender(gender.getSelectedItem().toString());

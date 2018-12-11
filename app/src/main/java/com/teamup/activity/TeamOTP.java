@@ -70,6 +70,8 @@ public class TeamOTP extends BaseActivity {
 
            // fillOTPFields("123456");
 
+            fillOTPFields(getIntent().getStringExtra("otp"));
+
             resendCode=findViewById(R.id.resendCode);
             confirm=findViewById(R.id.confirm);
             contentDes.setTypeface(CommonUtils.setFontTextNormal(context));

@@ -1,6 +1,7 @@
 package com.teamup.utils;
 
 import android.support.annotation.NonNull;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,9 +19,12 @@ import com.teamup.model.Player;
 public class FirebaseUtils {
 
     public static String FirebaseProfileStorageDir = "profile_pic",
-    PLAYERNODE = "players", TEAMNODE = "teamss",
+    NODE_PLAYER = "players", NODE_TEAM = "teamss", NODE_TEAM_MEMBER = "team_members",
     KEY_TEAM_CREATED_BY = "createdBy",
-    KEY_PHONE = "phone"
+    KEY_PHONE = "phone",
+    NODE_EVENT = "events",
+    KEY_PASSED_REFERENCE = "ref",
+    TAG = FirebaseUtils.class.getName()
 
             ;
 
@@ -55,9 +59,9 @@ public class FirebaseUtils {
 
                             if(player!=null) {
 
-                                if(!player.getImageUrl().isEmpty())
+                                if(!player.getImage_url().isEmpty())
                                 Picasso.get()
-                                        .load(player.getImageUrl())
+                                        .load(player.getImage_url())
                                         .placeholder(R.mipmap.place_holder)
                                         .into(imageView);
                             }
@@ -82,18 +86,22 @@ public class FirebaseUtils {
         imageView.setImageResource(R.mipmap.place_holder);
         if(isLoggedIn()){
 
-                  getFirebaseRootRef().child(PLAYERNODE)
+                  getFirebaseRootRef().child(NODE_PLAYER)
                     .child(uid)
                     .addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
+
+                            Log.d(TAG, "onDataChange: "+dataSnapshot.getValue());
+
                             Player player = dataSnapshot.getValue(Player.class);
 
+                         //   Log.d(TAG, "onDataChange: url = "+player.getImage_url());
 
-                            if(player!=null)
+                            if(player!=null && !player.getImage_url().isEmpty())
                                 Picasso.get()
-                                        .load(player.getImageUrl())
+                                        .load(player.getImage_url())
                                         .placeholder(R.mipmap.place_holder)
                                         .into(imageView);
 
@@ -155,7 +163,7 @@ public class FirebaseUtils {
     public static DatabaseReference getMyProfileReference(){
 
        return FirebaseUtils.getFirebaseRootRef()
-                .child(FirebaseUtils.PLAYERNODE)
+                .child(FirebaseUtils.NODE_PLAYER)
                 .child(FirebaseUtils.getUId());
     }
 
@@ -165,8 +173,26 @@ public class FirebaseUtils {
 
     public static DatabaseReference getTeamNodeRef(){
         return getFirebaseRootRef()
-                .child(TEAMNODE);
+                .child(NODE_TEAM);
     }
+
+
+    public static DatabaseReference getEventRef(String teamID){
+
+        return FirebaseUtils.getFirebaseRootRef()
+                .child(FirebaseUtils.NODE_EVENT)
+                .child(teamID);
+    }
+
+
+    public static DatabaseReference getTeamMemberRef(String teamID){
+
+        return FirebaseUtils.getFirebaseRootRef()
+                .child(FirebaseUtils.NODE_TEAM_MEMBER)
+                .child(teamID);
+    }
+
+
 
 }
 

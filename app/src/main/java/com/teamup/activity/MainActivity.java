@@ -9,8 +9,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.BaseTransientBottomBar;
-import android.support.design.widget.Snackbar;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextPaint;
@@ -28,8 +26,6 @@ import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
-import com.facebook.GraphRequest;
-import com.facebook.GraphResponse;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -37,22 +33,15 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.ProviderQueryResult;
-import com.google.firebase.auth.SignInMethodQueryResult;
 import com.teamup.R;
 import com.teamup.model.Player;
 import com.teamup.utils.AppConstant;
 import com.teamup.utils.CommonUtils;
 import com.teamup.utils.FirebaseUtils;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.util.Arrays;
-import java.util.List;
 
 
 public class MainActivity extends BaseActivity {
@@ -259,6 +248,16 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onSuccess(final LoginResult loginResult) {
 
+                String userId = loginResult.getAccessToken().getUserId();
+//                new GraphRequest(loginResult.getAccessToken(), "/"+userId+"/picture", null, HttpMethod.GET,
+//                        new GraphRequest.Callback() {
+//                            @Override
+//                            public void onCompleted(GraphResponse response) {
+//                                Log.d(TAG, "onCompleted: "+response.getRawResponse());
+//                            }
+//                        })
+//                        .executeAsync();
+
                 handleFacebookAccessToken(context,loginResult.getAccessToken(),isLogin, progressDialog, snackView);
 
             }
@@ -323,7 +322,7 @@ public class MainActivity extends BaseActivity {
 
                                 Player player = new Player();
                                 player.setFirstname(task.getResult().getUser().getDisplayName());
-                                player.setImageUrl(String.valueOf(task.getResult().getUser().getPhotoUrl()));
+                                player.setImage_url(String.valueOf(task.getResult().getUser().getPhotoUrl()));
                                 player.setEmail(task.getResult().getUser().getEmail());
 
                                 FirebaseUtils.getMyProfileReference()

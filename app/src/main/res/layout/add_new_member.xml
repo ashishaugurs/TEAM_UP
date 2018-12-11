@@ -81,7 +81,7 @@
                         android:layout_weight=".85"
                         android:background="@null"
                         android:cursorVisible="true"
-                        android:hint="@string/mobile"
+                        android:hint="@string/phone"
                         android:imeOptions="actionNext"
                         android:inputType="numberSigned"
                         android:singleLine="true"
@@ -296,49 +296,6 @@
 
 
 
-
-                <LinearLayout
-                    android:layout_marginTop="7dp"
-                    android:layout_marginRight="30dp"
-                    android:layout_marginLeft="30dp"
-                    android:background="@drawable/shape_white_rounded"
-                    android:weightSum="1"
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp" >
-
-                    <LinearLayout
-                        android:gravity="center"
-                        android:layout_width="0dp"
-                        android:layout_weight=".15"
-                        android:layout_height="match_parent" >
-
-                        <android.support.v7.widget.AppCompatImageView
-                            android:id="@+id/email_img"
-                            android:src="@mipmap/mail"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent" />
-                    </LinearLayout>
-
-                    <EditText
-                        android:paddingLeft="7dp"
-                        android:id="@+id/emailAddress"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight=".85"
-                        android:background="@null"
-                        android:cursorVisible="true"
-                        android:hint="@string/emailAdress"
-                        android:imeOptions="actionNext"
-                        android:inputType="textEmailAddress"
-                        android:singleLine="true"
-                        android:tag="first"
-                        android:textColor="@color/text_write"
-                        android:textColorHint="@color/hint_color"
-                        android:textCursorDrawable="@null"
-                        android:textSize="@dimen/text_size_smallest" />
-
-                </LinearLayout>
 
             </LinearLayout>
 

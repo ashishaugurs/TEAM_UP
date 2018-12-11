@@ -362,6 +362,7 @@
 
             <CheckBox
                 android:checked="true"
+                android:id="@+id/isMoneyCollected"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="30dp"
                 android:layout_marginLeft="30dp"
@@ -375,6 +376,7 @@
                 android:layout_marginLeft="30dp"
                 android:textColor="@color/text_write"
                 android:textSize="@dimen/text_size_smallest_ever"
+                android:id="@+id/isSendAttendance"
                 android:text="@string/send_attendance"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />

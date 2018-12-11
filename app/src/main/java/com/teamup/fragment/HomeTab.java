@@ -60,9 +60,9 @@ public class HomeTab extends Fragment{
         context=getActivity();
         try{
             parent=new RootActivity();
-            viewPager = (NoSwipeableViewPager) layoutView.findViewById(R.id.viewpager);
+            viewPager = layoutView.findViewById(R.id.viewpager);
             setupViewPager();
-            tabLayout = (TabLayout)layoutView.findViewById(R.id.tabs);
+            tabLayout = layoutView.findViewById(R.id.tabs);
             tabLayout.setupWithViewPager(viewPager);
             listernerTab(tabLayout,parent);
             setupTabIcons();
@@ -84,7 +84,7 @@ public class HomeTab extends Fragment{
     public View getTabView(int position) {
         // Given you have a custom layout in `res/layout/custom_tab.xml` with a TextView and ImageView
         View v = LayoutInflater.from(context).inflate(R.layout.custom_tab_icon, null);
-        TextView tv = (TextView) v.findViewById(R.id.text_data);
+        TextView tv = v.findViewById(R.id.text_data);
         tv.setTypeface(CommonUtils.setSfPro(context));
         if(position==0){
 
@@ -100,7 +100,7 @@ public class HomeTab extends Fragment{
 
         tv.setText(title[position]);
 
-        ImageView img = (ImageView) v.findViewById(R.id.icon_tab);
+        ImageView img = v.findViewById(R.id.icon_tab);
 
         if(position==0)
             img.setImageResource(tabsSelected[position]);
@@ -135,6 +135,8 @@ public class HomeTab extends Fragment{
         if(AppConstant.flag){
             viewPager.setCurrentItem(0);
         }
+
+
     }
 
 
@@ -155,8 +157,8 @@ public class HomeTab extends Fragment{
                         super.onTabSelected(tab);
 
                         View customView = tab.getCustomView();
-                        ImageView icon = (ImageView) customView.findViewById(R.id.icon_tab);
-                        TextView text = (TextView) customView.findViewById(R.id.text_data);
+                        ImageView icon = customView.findViewById(R.id.icon_tab);
+                        TextView text = customView.findViewById(R.id.text_data);
                         icon.setImageResource(tabsSelected[tab.getPosition()]);
                         text.setVisibility(View.VISIBLE);
                         text.setTextColor(ContextCompat.getColor(context,R.color.blue));
@@ -185,8 +187,8 @@ public class HomeTab extends Fragment{
                     public void onTabUnselected(TabLayout.Tab tab) {
                         super.onTabUnselected(tab);
                         View customView = tab.getCustomView();
-                        ImageView icon = (ImageView) customView.findViewById(R.id.icon_tab);
-                        TextView text = (TextView) customView.findViewById(R.id.text_data);
+                        ImageView icon = customView.findViewById(R.id.icon_tab);
+                        TextView text = customView.findViewById(R.id.text_data);
                         icon.setImageResource(tabIcons[tab.getPosition()]);
                         text.setTextColor(ContextCompat.getColor(context,R.color.text_write));
                         text.setText(title[tab.getPosition()]);
@@ -198,8 +200,8 @@ public class HomeTab extends Fragment{
                     public void onTabReselected(TabLayout.Tab tab) {
                         super.onTabReselected(tab);
                         View customView = tab.getCustomView();
-                        ImageView icon = (ImageView) customView.findViewById(R.id.icon_tab);
-                        TextView text = (TextView) customView.findViewById(R.id.text_data);
+                        ImageView icon = customView.findViewById(R.id.icon_tab);
+                        TextView text = customView.findViewById(R.id.text_data);
                         icon.setImageResource(tabsSelected[tab.getPosition()]);
                         text.setVisibility(View.VISIBLE);
                         text.setTextColor(ContextCompat.getColor(context,R.color.blue));
@@ -252,6 +254,10 @@ public class HomeTab extends Fragment{
         viewPager.setAdapter(adapter);
     }
 
+    public void navigateViewPagerToPosition(int position){
+        viewPager.setCurrentItem(position);
+    }
+
     protected  void logout() {
         android.support.v7.app.AlertDialog.Builder builder = new android.support.v7.app.AlertDialog.Builder(context);
         builder.setMessage("Do you want to logout from app?")
@@ -263,7 +269,7 @@ public class HomeTab extends Fragment{
                         Intent homeIntent = new Intent(getActivity(), MainActivity.class);
                         homeIntent.addCategory( Intent.CATEGORY_HOME );
                         homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(homeIntent); ;
+                        startActivity(homeIntent);
                         getActivity().finish();
 
                     }

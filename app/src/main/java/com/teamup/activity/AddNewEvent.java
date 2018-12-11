@@ -2,15 +2,18 @@ package com.teamup.activity;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.AppCompatImageView;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -22,8 +25,15 @@ import com.google.android.gms.location.places.AutocompleteFilter;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocompleteFragment;
 import com.google.android.gms.location.places.ui.PlaceSelectionListener;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DatabaseReference;
 import com.teamup.R;
+import com.teamup.model.Event;
+import com.teamup.utils.AppConstant;
 import com.teamup.utils.CommonUtils;
+import com.teamup.utils.FirebaseUtils;
 import com.teamup.utils.NDSpinner;
 
 import java.text.SimpleDateFormat;
@@ -32,16 +42,19 @@ import java.util.Locale;
 
 public class AddNewEvent extends BaseActivity {
     NDSpinner eventType,recurring;
-    EditText textRef,notes,opponentSpin;
+    EditText location,notes,opponentSpin;
     TextView dateTime,confirm,delete_event;
     AppCompatImageView eventIcon,eventArrow,dateTimeIcon,dateTimeArrow,
             recurrnigImg,recurringArrow,locationImg,opponentImg,opponentArrow, noteImg;
     private PlaceAutocompleteFragment placeAutocompleteFragment;
+    CheckBox isMoneyCollected, isSendAttendance;
+    String lat="", lng="";
 
     LinearLayout event_parent;
     DatePickerDialog.OnDateSetListener date;
     Calendar myCalendar;
 
+    String TAG = AddNewEvent.class.getName();
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,6 +82,9 @@ public class AddNewEvent extends BaseActivity {
     private void findIdSetTypeFace() {
 
         event_parent=findViewById(R.id.event_parent);
+
+        isMoneyCollected = findViewById(R.id.isMoneyCollected);
+        isSendAttendance = findViewById(R.id.isSendAttendance);
 
         eventType=findViewById(R.id.eventType);
         eventIcon=findViewById(R.id.eventIcon);
@@ -136,17 +152,20 @@ public class AddNewEvent extends BaseActivity {
     private void locationFunction() {
         placeAutocompleteFragment = (PlaceAutocompleteFragment) getFragmentManager().findFragmentById(R.id.place_autocomplete_fragment);
         ((View)findViewById(R.id.place_autocomplete_search_button)).setVisibility(View.GONE);
-        textRef=((EditText)findViewById(R.id.place_autocomplete_search_input));
-        textRef.setTextSize(TypedValue.COMPLEX_UNIT_PX,getResources().getDimension(R.dimen.text_size_smallest));
-        textRef.setTextColor(getResources().getColor(R.color.text_write));
-        textRef.setHintTextColor(getResources().getColor(R.color.hint_color));
-        textRef.setHint("Location");
+        location=((EditText)findViewById(R.id.place_autocomplete_search_input));
+        location.setTextSize(TypedValue.COMPLEX_UNIT_PX,getResources().getDimension(R.dimen.text_size_smallest));
+        location.setTextColor(getResources().getColor(R.color.text_write));
+        location.setHintTextColor(getResources().getColor(R.color.hint_color));
+        location.setHint("Location");
         AutocompleteFilter autocompleteFilter = new AutocompleteFilter.Builder().setTypeFilter(AutocompleteFilter.TYPE_FILTER_CITIES).build();
         placeAutocompleteFragment.setFilter(autocompleteFilter);
         placeAutocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
             @Override
             public void onPlaceSelected(Place place) {
                 locationImg.setImageResource(R.mipmap.event_loc);
+                LatLng latLng = place.getLatLng();
+                lat = latLng.latitude+"";
+                lng = latLng.longitude+"";
                 Toast.makeText(getApplicationContext(),place.getName().toString(),Toast.LENGTH_SHORT).show();
             }
 
@@ -163,7 +182,7 @@ public class AddNewEvent extends BaseActivity {
             public void onClick(View view) {
 
                 if(checkValidation()){
-                    CommonUtils.simpleSnackBar("work in progress",event_parent);
+                    addEvent();
                 }
 
             }
@@ -188,7 +207,7 @@ public class AddNewEvent extends BaseActivity {
             CommonUtils.simpleSnackBar("Please select reccuring event",event_parent);
             return false;
         }
-        else if(TextUtils.isEmpty(textRef.getText().toString().trim())){
+        else if(TextUtils.isEmpty(location.getText().toString().trim())){
 
             CommonUtils.hideSoftKeyboard(context);
             CommonUtils.simpleSnackBar("Please select location",event_parent);
@@ -435,6 +454,49 @@ public class AddNewEvent extends BaseActivity {
     /*oppnent*/
 
 
+
+    private void addEvent(){
+
+        String teamID = getIntent().getStringExtra(AppConstant.KEY_TEAM_ID);
+
+        DatabaseReference reference = FirebaseUtils.getEventRef(teamID)
+                .push();
+
+        String eventID = reference.getKey();
+
+        Event event = new Event(dateTime.getText().toString(),
+                notes.getText().toString(),
+                isMoneyCollected.isChecked(),
+                isSendAttendance.isChecked(),
+                lat,
+                location.getText().toString(),
+                lng,
+                opponentSpin.getText().toString(),
+                //recurring.getSelectedItem().toString(),
+                true,
+                eventType.getSelectedItem().toString(),
+                FirebaseUtils.getUId(),
+                true,
+                "",
+                false,
+                teamID,
+                eventID);
+       
+
+                reference.setValue(event)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                   
+                        if(task.isSuccessful()){
+                            Log.d(TAG, "onComplete: success");
+                            Toast.makeText(context, "Event Added", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
+
+    }
 
 
 }

@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.pkmmte.view.CircularImageView;
 import com.teamup.R;
+import com.teamup.model.Team;
 import com.teamup.utils.CommonUtils;
 import com.teamup.utils.OnItemClickListener;
 
@@ -54,6 +55,11 @@ public class DetailMenuAdap extends RecyclerView.Adapter<DetailMenuAdap.MyViewHo
                 }
             }
         });
+    }
+
+    public void addItem(String item){
+        dataList.add(item);
+        notifyDataSetChanged();
     }
 
 

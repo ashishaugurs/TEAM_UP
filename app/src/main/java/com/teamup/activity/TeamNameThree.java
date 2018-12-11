@@ -4,16 +4,19 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.AppCompatImageView;
+import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
@@ -21,12 +24,19 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
 import com.teamup.R;
 import com.teamup.adapter.EventAdapter;
 import com.teamup.adapter.EventMember;
 import com.teamup.adapter.MessageAdapter;
 import com.teamup.model.ChatBubble;
+import com.teamup.model.Event;
+import com.teamup.model.Member;
+import com.teamup.utils.AppConstant;
 import com.teamup.utils.CommonUtils;
+import com.teamup.utils.FirebaseUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,6 +51,9 @@ public class TeamNameThree extends BaseActivity {
     private List<ChatBubble> ChatBubbles=new ArrayList<>();
     MessageAdapter msgAdapter;
     ListView listView;
+    String TAG = TeamNameThree.class.getName();
+
+    ArrayList<Event> events = new ArrayList<>();
 //    AppCompatImageView notificationChange;
 
     @Override
@@ -145,6 +158,10 @@ public class TeamNameThree extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
+
+
+
+
 //        notificationChange.setVisibility(View.VISIBLE);
     }
 
@@ -247,19 +264,70 @@ public class TeamNameThree extends BaseActivity {
 
 
     private void eventAdapter() {
-        EventAdapter adapter = new EventAdapter(context,new ArrayList<String>(),type);
-        listView.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
+
+
+        FirebaseUtils.getEventRef(getIntent().getStringExtra(AppConstant.KEY_TEAM_ID))
+                .orderByChild("deleted").equalTo(false)
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        events.clear();
+                        for(DataSnapshot post: dataSnapshot.getChildren()){
+                            events.add(post.getValue(Event.class));
+
+                           // Log.d(TAG, String.valueOf("onDataChange: "+post.getValue(Event.class).getCreatedBy()));
+                        }
+
+                        EventAdapter adapter = new EventAdapter(context,events,type);
+                        listView.setAdapter(adapter);
+                        adapter.notifyDataSetChanged();
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
+
     }
     private void eventMember() {
-        EventMember adapter = new EventMember(context,new ArrayList<String>(),type);
-        listView.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
+
+        FirebaseUtils.getTeamMemberRef(getIntent().getStringExtra(AppConstant.KEY_TEAM_ID))
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                        ArrayList<Member> members = new ArrayList<>();
+                        for(DataSnapshot post: dataSnapshot.getChildren()){
+                            members.add(post.getValue(Member.class));
+                        }
+
+                        EventMember adapter = new EventMember(context,members,type);
+                        listView.setAdapter(adapter);
+                        adapter.notifyDataSetChanged();
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
     }
     private void messageAdapter() {
         msgAdapter = new MessageAdapter(this, R.layout.left_chat_bubble, ChatBubbles);
         listView.setAdapter(msgAdapter);
     }
+
+
+    ListView.OnItemClickListener onItemClickListener = new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+        }
+    };
 
 
     @Override
@@ -284,11 +352,19 @@ public class TeamNameThree extends BaseActivity {
                 startActivity(new Intent(context,EditEvent.class));
                 return true;
             case R.id.addNewEvent:
-                startActivity(new Intent(context,AddNewEvent.class));
+                Intent addNewEventIntent = new Intent(context, AddNewEvent.class);
+                addNewEventIntent.putExtra(AppConstant.KEY_TEAM_ID, getIntent().getStringExtra(AppConstant.KEY_TEAM_ID));
+                startActivity(addNewEventIntent);
                 return true;
+
+
             case R.id.addNewMember:
-                startActivity(new Intent(context,AddNewMember.class));
+                Intent addNewMemberIntent = new Intent(context, AddNewMember.class);
+                addNewMemberIntent.putExtra(AppConstant.KEY_TEAM_ID, getIntent().getStringExtra(AppConstant.KEY_TEAM_ID));
+                startActivity(addNewMemberIntent);
                 return true;
+
+
             case R.id.teamNotification:
 //               Toast.makeText(getApplicationContext(),"Note Option Selected",Toast.LENGTH_SHORT).show();
                 return true;

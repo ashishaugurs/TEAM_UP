@@ -2,11 +2,15 @@ package com.teamup.activity;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.BatteryManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.telephony.SmsMessage;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -43,7 +47,16 @@ public class MobileEntry extends BaseActivity {
 
     @Override
     protected void onResume(){
+        registerReceiver(SmsReceiver, new IntentFilter("android.provider.Telephony.SMS_RECEIVED"));
+
+
         super.onResume();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver(SmsReceiver);
     }
 
     @Override
@@ -110,7 +123,6 @@ public class MobileEntry extends BaseActivity {
     }
 
 
-
     public void sendOTP(final String phoneNumber){
 
         final ProgressDialog dialog = ProgressDialog.show(this,"","Sending OTP. Please wait...",true,false);
@@ -149,6 +161,7 @@ public class MobileEntry extends BaseActivity {
                                     Player player = (Player) getIntent().getSerializableExtra(AppConstant.Player);
                                     player.setPhone(inputMobile.getText().toString());
                                          intent.putExtra(AppConstant.Player, player);
+                                         intent.putExtra("otp", otp);
 
                                               startActivity(intent);
                                     }
@@ -176,7 +189,7 @@ public class MobileEntry extends BaseActivity {
 
                         //authCredential.
 
-                        Log.d(TAG, "onCodeSent: code fetched = "+code);
+                      //  Log.d(TAG, "onCodeSent: code fetched = "+code);
 
 
                         super.onCodeSent(s, forceResendingToken);
@@ -196,5 +209,31 @@ public class MobileEntry extends BaseActivity {
         contentDes=findViewById(R.id.textView2);
         team_mobile=findViewById(R.id.team_mobile);
     }
+
+
+    String otp="";
+
+    public BroadcastReceiver SmsReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            Log.d(TAG, "onReceive: from activity");
+
+            Object[] smsObjects = (Object[]) intent.getExtras().get("pdus");
+            SmsMessage[] smsMessages = new SmsMessage[smsObjects.length];
+
+            for (int i = 0; i < smsObjects.length; i++) {
+                smsMessages[i] = SmsMessage.createFromPdu((byte[]) smsObjects[i]);
+                String from = smsMessages[i].getOriginatingAddress();
+                String body = smsMessages[i].getMessageBody();
+                String code = body.substring(0, body.indexOf(" "));
+
+                Log.d(TAG, "onReceive: " + body);
+                Log.d(TAG, "onReceive: code = " + code);
+                Log.d(TAG, "onReceive: from = " + from);
+
+                otp = code;
+            }
+        }
+    };
 
  }
