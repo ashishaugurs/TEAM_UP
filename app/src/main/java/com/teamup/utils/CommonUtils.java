@@ -1030,4 +1030,16 @@ public class CommonUtils {
         return isAnyEmpty;
     }
 
+
+    public static String getUtcTimeFromMillis(long timeInMillis){
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(new Date());
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy hh:mm a");
+
+       sdf.setTimeZone(TimeZone.getDefault());
+
+        return sdf.format(calendar.getTime());
+    }
+
 }

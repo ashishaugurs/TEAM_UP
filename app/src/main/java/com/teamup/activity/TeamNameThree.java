@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.AppCompatImageView;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
@@ -24,6 +23,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
@@ -31,7 +32,7 @@ import com.teamup.R;
 import com.teamup.adapter.EventAdapter;
 import com.teamup.adapter.EventMember;
 import com.teamup.adapter.MessageAdapter;
-import com.teamup.model.ChatBubble;
+import com.teamup.model.ChatMessage;
 import com.teamup.model.Event;
 import com.teamup.model.Member;
 import com.teamup.utils.AppConstant;
@@ -48,9 +49,10 @@ public class TeamNameThree extends BaseActivity {
     FrameLayout replaceFragment;
     EditText chat_text;
     boolean myMessage = true;
-    private List<ChatBubble> ChatBubbles=new ArrayList<>();
+    private List<ChatMessage> chatMessages =new ArrayList<>();
     MessageAdapter msgAdapter;
     ListView listView;
+    String teamID="";
     String TAG = TeamNameThree.class.getName();
 
     ArrayList<Event> events = new ArrayList<>();
@@ -62,6 +64,7 @@ public class TeamNameThree extends BaseActivity {
         context=this;
         setContentView(R.layout.team_name_three);
         init();
+        teamID = getIntent().getStringExtra(AppConstant.KEY_TEAM_ID);
 //      setBackText();
 //      setHeadValue("Team name",context);
         setToolbar("Team name");
@@ -247,10 +250,23 @@ public class TeamNameThree extends BaseActivity {
                     Toast.makeText(context, "Please input some text...", Toast.LENGTH_SHORT).show();
                 } else {
                     //add message to list
-                    ChatBubble ChatBubble = new ChatBubble(chat_text.getText().toString(), myMessage);
-                    ChatBubbles.add(ChatBubble);
-                    msgAdapter.notifyDataSetChanged();
-                    chat_text.setText("");
+                    
+                    ChatMessage chatMessage = new ChatMessage();
+                    chatMessage.setMessage(chat_text.getText().toString());
+                    chatMessage.setTimeInMillis(System.currentTimeMillis());
+                    chatMessage.setFrom(FirebaseUtils.getUId());
+                    
+                    FirebaseUtils.getChatReference(teamID)
+                            .push()
+                            .setValue(chatMessage)
+                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Log.d(TAG, "onSuccess: message sent");
+                                    chat_text.setText("");
+                                }
+                            });
+                    
                     if (myMessage) {
                         myMessage = false;
                     } else {
@@ -292,6 +308,8 @@ public class TeamNameThree extends BaseActivity {
 
 
     }
+
+
     private void eventMember() {
 
         FirebaseUtils.getTeamMemberRef(getIntent().getStringExtra(AppConstant.KEY_TEAM_ID))
@@ -316,9 +334,44 @@ public class TeamNameThree extends BaseActivity {
                 });
 
     }
+
+
     private void messageAdapter() {
-        msgAdapter = new MessageAdapter(this, R.layout.left_chat_bubble, ChatBubbles);
+        msgAdapter = new MessageAdapter(this, R.layout.left_chat_bubble, chatMessages);
+        msgAdapter.clearList();
         listView.setAdapter(msgAdapter);
+
+
+        FirebaseUtils.getChatReference(teamID)
+                .addChildEventListener(new ChildEventListener() {
+                    @Override
+                    public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                        msgAdapter.addMessage(dataSnapshot.getValue(ChatMessage.class));
+                        listView.smoothScrollToPosition(msgAdapter.getCount() - 1);
+                    }
+
+                    @Override
+                    public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                    }
+
+                    @Override
+                    public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+                    }
+
+                    @Override
+                    public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
+
     }
 
 

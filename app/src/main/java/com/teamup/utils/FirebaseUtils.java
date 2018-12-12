@@ -24,8 +24,8 @@ public class FirebaseUtils {
     KEY_PHONE = "phone",
     NODE_EVENT = "events",
     KEY_PASSED_REFERENCE = "ref",
+    NODE_CHAT = "chats",
     TAG = FirebaseUtils.class.getName()
-
             ;
 
 
@@ -152,6 +152,69 @@ public class FirebaseUtils {
     }
 
 
+    public static void setUserFullName(final TextView textView, String uid){
+
+
+        if(isLoggedIn()){
+
+                 getProfileReference(uid)
+                    .addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                            Player player = dataSnapshot.getValue(Player.class);
+
+
+                            if(player!=null)
+                                textView.setText(player.getFirstname()+" "+player.getLastname());
+
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
+
+
+
+        }
+
+    }
+
+
+    public static void setUserFirstName(final TextView textView, String uid){
+
+
+        if(isLoggedIn()){
+
+            getProfileReference(uid)
+                    .addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                            Player player = dataSnapshot.getValue(Player.class);
+
+
+                            if(player!=null)
+                                textView.setText(player.getFirstname());
+
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
+
+
+
+        }
+
+    }
+
 
 
     public static DatabaseReference getFirebaseRootRef(){
@@ -159,6 +222,12 @@ public class FirebaseUtils {
         return FirebaseDatabase.getInstance().getReference();
     }
 
+    public static DatabaseReference getProfileReference(String uid){
+
+        return FirebaseUtils.getFirebaseRootRef()
+                .child(FirebaseUtils.NODE_PLAYER)
+                .child(uid);
+    }
 
     public static DatabaseReference getMyProfileReference(){
 
@@ -189,6 +258,13 @@ public class FirebaseUtils {
 
         return FirebaseUtils.getFirebaseRootRef()
                 .child(FirebaseUtils.NODE_TEAM_MEMBER)
+                .child(teamID);
+    }
+
+    public static DatabaseReference getChatReference(String teamID){
+
+        return FirebaseUtils.getFirebaseRootRef()
+                .child(NODE_CHAT)
                 .child(teamID);
     }
 

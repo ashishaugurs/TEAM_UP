@@ -26,20 +26,18 @@ import android.widget.Toast;
 
 import com.teamup.R;
 import com.teamup.adapter.MessageAdapter;
-import com.teamup.model.ChatBubble;
+import com.teamup.model.ChatMessage;
 import com.teamup.utils.CommonUtils;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.teamup.utils.AppConstant.flag;
 
 public class SingleChat extends BaseActivity {
 
     LinearLayout btn_send;
     MessageAdapter msgAdapter;
     ListView listView;
-    private List<ChatBubble> ChatBubbles=new ArrayList<>();
+    private List<ChatMessage> chatMessages =new ArrayList<>();
     EditText chat_text;
     boolean myMessage = true;
 
@@ -67,8 +65,10 @@ public class SingleChat extends BaseActivity {
                     Toast.makeText(context, "Please input some text...", Toast.LENGTH_SHORT).show();
                 } else {
                     //add message to list
-                    ChatBubble ChatBubble = new ChatBubble(chat_text.getText().toString(), myMessage);
-                    ChatBubbles.add(ChatBubble);
+                    ChatMessage ChatMessage = new ChatMessage();
+                    ChatMessage.setMessage(chat_text.getText().toString());
+
+                    chatMessages.add(ChatMessage);
                     msgAdapter.notifyDataSetChanged();
                     chat_text.setText("");
                     if (myMessage) {
@@ -145,7 +145,7 @@ public class SingleChat extends BaseActivity {
 
     private void messageAdapter() {
         listView=findViewById(R.id.list_msg);
-        msgAdapter = new MessageAdapter(this, R.layout.left_chat_bubble, ChatBubbles);
+        msgAdapter = new MessageAdapter(this, R.layout.left_chat_bubble, chatMessages);
         listView.setAdapter(msgAdapter);
     }
 
