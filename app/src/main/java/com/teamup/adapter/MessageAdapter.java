@@ -18,7 +18,7 @@ public class MessageAdapter extends ArrayAdapter<ChatMessage> {
 
     private Activity activity;
     private List<ChatMessage> messages = new ArrayList<>();
-    private int MY_BUBBLE = 0, SENDER_BUBBLE = 1;
+    private int MY_BUBBLE = 0, SENDER_BUBBLE = 1, HEADER = 2;
 
     public MessageAdapter(Activity context, int resource, List<ChatMessage> objects) {
         super(context, resource, objects);
@@ -37,6 +37,10 @@ public class MessageAdapter extends ArrayAdapter<ChatMessage> {
         notifyDataSetChanged();
     }
 
+    public void addMessageAt(ChatMessage chatMessage, int position){
+        messages.add(position, chatMessage);
+        notifyDataSetChanged();
+    }
 
     public void clearList()
     {
@@ -71,6 +75,7 @@ public class MessageAdapter extends ArrayAdapter<ChatMessage> {
             FirebaseUtils.setUserFirstName(holder.sender, messages.get(position).getFrom());
         }
 
+
         //set message content
         holder.msg.setText(ChatMessage.getMessage());
 
@@ -88,8 +93,11 @@ public class MessageAdapter extends ArrayAdapter<ChatMessage> {
     public int getItemViewType(int position) {
         // return a value between 0 and (getViewTypeCount - 1)
 
+
         if(messages.get(position).getFrom().equalsIgnoreCase(FirebaseUtils.getUId()))
             return MY_BUBBLE;
+
+
 
         return SENDER_BUBBLE;
     }

@@ -5,6 +5,7 @@ import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -12,6 +13,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 import com.squareup.picasso.Picasso;
 import com.teamup.R;
 import com.teamup.model.Player;
@@ -25,6 +28,7 @@ public class FirebaseUtils {
     NODE_EVENT = "events",
     KEY_PASSED_REFERENCE = "ref",
     NODE_CHAT = "chats",
+    NODE_TOKEN = "tokens",
     TAG = FirebaseUtils.class.getName()
             ;
 
@@ -269,6 +273,31 @@ public class FirebaseUtils {
     }
 
 
+    public static void storeTokenToServer(){
+
+
+        FirebaseInstanceId.getInstance()
+                .getInstanceId()
+                .addOnSuccessListener(new OnSuccessListener<InstanceIdResult>() {
+                    @Override
+                    public void onSuccess(InstanceIdResult instanceIdResult) {
+
+                        String token = instanceIdResult.getToken();
+                        getFirebaseRootRef().child(NODE_TOKEN)
+                                .child(getUId())
+                                .setValue(token)
+                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+                                        Log.d(TAG, "onSuccess: Token stored for -> "+getUId());
+                                    }
+                                });
+
+
+                    }
+                });
+
+    }
 
 }
 

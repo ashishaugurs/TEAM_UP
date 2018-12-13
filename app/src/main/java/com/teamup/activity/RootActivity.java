@@ -15,10 +15,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 import com.teamup.R;
 import com.teamup.fragment.HomeTab;
 import com.teamup.fragment.NavigationDrawerFragment;
 import com.teamup.utils.CommonUtils;
+import com.teamup.utils.FirebaseUtils;
 
 public class RootActivity extends BaseActivity implements NavigationDrawerFragment.FragmentDrawerListener{
     Toolbar mToolbar;
@@ -39,6 +43,9 @@ public class RootActivity extends BaseActivity implements NavigationDrawerFragme
            drawerSetUp();
            imageNotification=changeRightIcon(R.drawable.notifications,context);
            slidingPos=0;
+
+
+           FirebaseUtils.storeTokenToServer();
 
            if (savedInstanceState == null) {
                // withholding the previously created fragment from being created again

@@ -402,7 +402,7 @@ public class TeamNameThree extends BaseActivity {
                 startActivity(new Intent(context,EditTeam.class));
                 return true;
             case R.id.editEvent:
-                startActivity(new Intent(context,EditEvent.class));
+               // startActivity(new Intent(context,EditEvent.class));
                 return true;
             case R.id.addNewEvent:
                 Intent addNewEventIntent = new Intent(context, AddNewEvent.class);

@@ -45,7 +45,6 @@ public class TeamOTP extends BaseActivity {
     protected void onResume() {
         super.onResume();
 
-
         registerReceiver(SmsReceiver, new IntentFilter("android.provider.Telephony.SMS_RECEIVED"));
     }
 

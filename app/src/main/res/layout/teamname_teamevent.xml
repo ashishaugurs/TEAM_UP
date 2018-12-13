@@ -151,7 +151,7 @@
         android:layout_marginTop="17dp"
         android:background="@color/slider_border"
         android:layout_width="match_parent"
-        android:layout_height="1dp"></View>
+        android:layout_height="1dp"/>
 
     <!--bottom layout-->
 
